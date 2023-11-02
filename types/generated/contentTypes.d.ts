@@ -689,44 +689,51 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    firstname: Attribute.String & Attribute.Required;
-    lastname: Attribute.String & Attribute.Required;
-    email: Attribute.Email & Attribute.Required & Attribute.Unique;
-    idnumber: Attribute.BigInteger & Attribute.Required & Attribute.Unique;
-    phonenumber: Attribute.BigInteger & Attribute.Required;
-    dob: Attribute.Date & Attribute.Required;
-    male: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
-    southafrican: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<true>;
-    province: Attribute.String & Attribute.Required;
-    city: Attribute.String & Attribute.Required;
-    interviewspot: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    physicaladdress: Attribute.RichText & Attribute.Required;
-    postaladdress: Attribute.RichText & Attribute.Required;
-    homelanguage: Attribute.String & Attribute.Required;
-    highestqualification: Attribute.String & Attribute.Required;
-    nextofkin: Attribute.String & Attribute.Required;
-    noknumber: Attribute.BigInteger & Attribute.Required;
-    postalcode: Attribute.Integer & Attribute.Required;
-    mie: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
-    currentlystudying: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    githublink: Attribute.String & Attribute.Required & Attribute.Unique;
-    linkedinlink: Attribute.String & Attribute.Required & Attribute.Unique;
-    previouscompany1: Attribute.String & Attribute.Required;
-    previouscompany2: Attribute.String & Attribute.Required;
-    company1position: Attribute.String & Attribute.Required;
+    firstname: Attribute.String;
+    lastname: Attribute.String;
+    email: Attribute.Email & Attribute.Unique;
+    idnumber: Attribute.BigInteger & Attribute.Unique;
+    phonenumber: Attribute.BigInteger;
+    dob: Attribute.Date;
+    male: Attribute.Boolean & Attribute.DefaultTo<true>;
+    southafrican: Attribute.Boolean & Attribute.DefaultTo<true>;
+    province: Attribute.String;
+    city: Attribute.String;
+    interviewspot: Attribute.Boolean & Attribute.DefaultTo<false>;
+    physicaladdress: Attribute.RichText;
+    postaladdress: Attribute.RichText;
+    homelanguage: Attribute.String;
+    highestqualification: Attribute.String;
+    nextofkin: Attribute.String;
+    noknumber: Attribute.BigInteger;
+    postalcode: Attribute.Integer;
+    mie: Attribute.Boolean & Attribute.DefaultTo<false>;
+    currentlystudying: Attribute.Boolean & Attribute.DefaultTo<false>;
+    githublink: Attribute.String & Attribute.Unique;
+    linkedinlink: Attribute.String & Attribute.Unique;
+    previouscompany1: Attribute.String;
+    previouscompany2: Attribute.String;
+    company1position: Attribute.String;
     company2position: Attribute.String;
-    termofcontractcompany1: Attribute.Integer &
-      Attribute.Required &
-      Attribute.DefaultTo<0>;
+    termofcontractcompany1: Attribute.Integer & Attribute.DefaultTo<0>;
     termofcontractcompany2: Attribute.Integer;
-    keyresponsibilitiescompany1: Attribute.RichText & Attribute.Required;
+    keyresponsibilitiescompany1: Attribute.RichText;
     keyresponsibilitiescompany2: Attribute.RichText;
+    softskillrating: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::softskillrating.softskillrating'
+    >;
+    techskillrating: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'api::technicalskill.technicalskill'
+    >;
+    users_permissions_user: Attribute.Relation<
+      'api::applicant.applicant',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -759,6 +766,11 @@ export interface ApiCohortCohort extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     description: Attribute.RichText & Attribute.Required;
+    teams: Attribute.Relation<
+      'api::cohort.cohort',
+      'oneToMany',
+      'api::team.team'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -891,6 +903,16 @@ export interface ApiTeamTeam extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
+    project: Attribute.Relation<
+      'api::team.team',
+      'oneToOne',
+      'api::project.project'
+    >;
+    teamleader: Attribute.Relation<
+      'api::team.team',
+      'oneToOne',
+      'api::teamleader.teamleader'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

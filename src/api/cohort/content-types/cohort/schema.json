@@ -19,6 +19,11 @@
     "description": {
       "type": "richtext",
       "required": true
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team.team"
     }
   }
 }

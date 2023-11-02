@@ -14,120 +14,120 @@
   "attributes": {
     "firstname": {
       "type": "string",
-      "required": true,
+      "required": false,
       "unique": false
     },
     "lastname": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "email": {
       "type": "email",
       "unique": true,
-      "required": true
+      "required": false
     },
     "idnumber": {
       "type": "biginteger",
-      "required": true,
+      "required": false,
       "unique": true
     },
     "phonenumber": {
       "type": "biginteger",
-      "required": true
+      "required": false
     },
     "dob": {
       "type": "date",
-      "required": true
+      "required": false
     },
     "male": {
       "type": "boolean",
       "default": true,
-      "required": true
+      "required": false
     },
     "southafrican": {
       "type": "boolean",
       "default": true,
-      "required": true
+      "required": false
     },
     "province": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "city": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "interviewspot": {
       "type": "boolean",
       "default": false,
-      "required": true
+      "required": false
     },
     "physicaladdress": {
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "postaladdress": {
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "homelanguage": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "highestqualification": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "nextofkin": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "noknumber": {
-      "required": true,
+      "required": false,
       "type": "biginteger"
     },
     "postalcode": {
       "type": "integer",
-      "required": true
+      "required": false
     },
     "mie": {
       "type": "boolean",
       "default": false,
-      "required": true
+      "required": false
     },
     "currentlystudying": {
       "type": "boolean",
       "default": false,
-      "required": true
+      "required": false
     },
     "githublink": {
       "type": "string",
-      "required": true,
+      "required": false,
       "unique": true
     },
     "linkedinlink": {
       "type": "string",
-      "required": true,
+      "required": false,
       "unique": true
     },
     "previouscompany1": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "previouscompany2": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "company1position": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "company2position": {
       "type": "string"
     },
     "termofcontractcompany1": {
       "type": "integer",
-      "required": true,
+      "required": false,
       "default": 0
     },
     "termofcontractcompany2": {
@@ -135,10 +135,25 @@
     },
     "keyresponsibilitiescompany1": {
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "keyresponsibilitiescompany2": {
       "type": "richtext"
+    },
+    "softskillrating": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::softskillrating.softskillrating"
+    },
+    "techskillrating": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::technicalskill.technicalskill"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
