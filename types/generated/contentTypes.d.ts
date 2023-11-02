@@ -836,6 +836,32 @@ export interface ApiProjectProject extends Schema.CollectionType {
   };
 }
 
+export interface ApiQuizQuiz extends Schema.CollectionType {
+  collectionName: 'quizzes';
+  info: {
+    singularName: 'quiz';
+    pluralName: 'quizzes';
+    displayName: 'quiz';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    question1: Attribute.RichText & Attribute.Required;
+    question2: Attribute.RichText & Attribute.Required;
+    question3: Attribute.RichText;
+    question4: Attribute.RichText;
+    question5: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSoftskillratingSoftskillrating
   extends Schema.CollectionType {
   collectionName: 'softskillratings';
@@ -998,6 +1024,7 @@ declare module '@strapi/types' {
       'api::applicant.applicant': ApiApplicantApplicant;
       'api::cohort.cohort': ApiCohortCohort;
       'api::project.project': ApiProjectProject;
+      'api::quiz.quiz': ApiQuizQuiz;
       'api::softskillrating.softskillrating': ApiSoftskillratingSoftskillrating;
       'api::team.team': ApiTeamTeam;
       'api::teamleader.teamleader': ApiTeamleaderTeamleader;
