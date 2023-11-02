@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "project"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "projectname": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "problemstatement": {
+      "type": "richtext",
+      "required": true
+    },
+    "solution": {
+      "type": "richtext",
+      "required": true
+    },
+    "screenshot1explanation": {
+      "type": "richtext",
+      "required": true
+    },
+    "screenshot2explanation": {
+      "type": "richtext",
+      "required": true
+    },
+    "screenshot3explanation": {
+      "type": "richtext",
+      "required": true
+    },
+    "screenshot4explanation": {
+      "type": "richtext",
+      "required": true
+    },
+    "screenshot5explanation": {
+      "type": "richtext",
+      "required": true
+    },
+    "screenshot6explanation": {
+      "type": "richtext"
+    },
+    "screenshot7explanation": {
+      "type": "richtext"
+    }
+  }
+}

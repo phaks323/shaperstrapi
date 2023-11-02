@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "technicalskills",
+  "info": {
+    "singularName": "technicalskill",
+    "pluralName": "technicalskills",
+    "displayName": "techskillrating",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "skill1": {
+      "type": "decimal",
+      "required": true
+    },
+    "skill2": {
+      "type": "decimal",
+      "required": true
+    },
+    "skill3": {
+      "type": "decimal",
+      "required": true
+    },
+    "skill4": {
+      "type": "decimal",
+      "required": true
+    },
+    "skill5": {
+      "type": "decimal",
+      "required": true
+    },
+    "skill6": {
+      "type": "decimal"
+    },
+    "skill7": {
+      "type": "decimal"
+    }
+  }
+}

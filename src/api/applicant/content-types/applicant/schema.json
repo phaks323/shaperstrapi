@@ -1,0 +1,119 @@
+{
+  "kind": "collectionType",
+  "collectionName": "applicants",
+  "info": {
+    "singularName": "applicant",
+    "pluralName": "applicants",
+    "displayName": "applicant",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstname": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "unique": true,
+      "required": true
+    },
+    "idnumber": {
+      "type": "biginteger",
+      "required": true,
+      "unique": true
+    },
+    "phonenumber": {
+      "type": "biginteger",
+      "required": true
+    },
+    "dob": {
+      "type": "date",
+      "required": true
+    },
+    "male": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "southafrican": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "province": {
+      "type": "string",
+      "required": true
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "interviewspot": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "physicaladdress": {
+      "type": "richtext",
+      "required": true
+    },
+    "postaladdress": {
+      "type": "richtext",
+      "required": true
+    },
+    "homelanguage": {
+      "type": "string",
+      "required": true
+    },
+    "highestqualification": {
+      "type": "string",
+      "required": true
+    },
+    "nextofkin": {
+      "type": "string",
+      "required": true
+    },
+    "noknumber": {
+      "required": true,
+      "type": "biginteger"
+    },
+    "postalcode": {
+      "type": "integer",
+      "required": true
+    },
+    "mie": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "currentlystudying": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "techskillrating": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::technicalskill.technicalskill"
+    },
+    "softskillrating": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::softskillrating.softskillrating"
+    }
+  }
+}
