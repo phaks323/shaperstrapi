@@ -730,6 +730,18 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
       'oneToOne',
       'api::softskillrating.softskillrating'
     >;
+    githublink: Attribute.String & Attribute.Required & Attribute.Unique;
+    linkedinlink: Attribute.String & Attribute.Required & Attribute.Unique;
+    previouscompany1: Attribute.String & Attribute.Required;
+    previouscompany2: Attribute.String & Attribute.Required;
+    company1position: Attribute.String & Attribute.Required;
+    company2position: Attribute.String;
+    termofcontractcompany1: Attribute.Integer &
+      Attribute.Required &
+      Attribute.DefaultTo<0>;
+    termofcontractcompany2: Attribute.Integer;
+    keyresponsibilitiescompany1: Attribute.RichText & Attribute.Required;
+    keyresponsibilitiescompany2: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

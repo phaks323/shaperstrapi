@@ -114,6 +114,46 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::softskillrating.softskillrating"
+    },
+    "githublink": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "linkedinlink": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "previouscompany1": {
+      "type": "string",
+      "required": true
+    },
+    "previouscompany2": {
+      "type": "string",
+      "required": true
+    },
+    "company1position": {
+      "type": "string",
+      "required": true
+    },
+    "company2position": {
+      "type": "string"
+    },
+    "termofcontractcompany1": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "termofcontractcompany2": {
+      "type": "integer"
+    },
+    "keyresponsibilitiescompany1": {
+      "type": "richtext",
+      "required": true
+    },
+    "keyresponsibilitiescompany2": {
+      "type": "richtext"
     }
   }
 }
