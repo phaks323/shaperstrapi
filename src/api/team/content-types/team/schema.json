@@ -15,16 +15,6 @@
     "name": {
       "type": "string",
       "required": true
-    },
-    "applicants": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::applicant.applicant"
-    },
-    "teamleader": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::teamleader.teamleader"
     }
   }
 }

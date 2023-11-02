@@ -715,21 +715,6 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
     currentlystudying: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
-    users_permissions_user: Attribute.Relation<
-      'api::applicant.applicant',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    techskillrating: Attribute.Relation<
-      'api::applicant.applicant',
-      'oneToOne',
-      'api::technicalskill.technicalskill'
-    >;
-    softskillrating: Attribute.Relation<
-      'api::applicant.applicant',
-      'oneToOne',
-      'api::softskillrating.softskillrating'
-    >;
     githublink: Attribute.String & Attribute.Required & Attribute.Unique;
     linkedinlink: Attribute.String & Attribute.Required & Attribute.Unique;
     previouscompany1: Attribute.String & Attribute.Required;
@@ -774,11 +759,6 @@ export interface ApiCohortCohort extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     description: Attribute.RichText & Attribute.Required;
-    teams: Attribute.Relation<
-      'api::cohort.cohort',
-      'oneToMany',
-      'api::team.team'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -911,16 +891,6 @@ export interface ApiTeamTeam extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    applicants: Attribute.Relation<
-      'api::team.team',
-      'oneToMany',
-      'api::applicant.applicant'
-    >;
-    teamleader: Attribute.Relation<
-      'api::team.team',
-      'oneToOne',
-      'api::teamleader.teamleader'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -945,11 +915,6 @@ export interface ApiTeamleaderTeamleader extends Schema.CollectionType {
   attributes: {
     firstname: Attribute.String & Attribute.Required;
     lastname: Attribute.String & Attribute.Required;
-    users_permissions_user: Attribute.Relation<
-      'api::teamleader.teamleader',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

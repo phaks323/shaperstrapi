@@ -100,21 +100,6 @@
       "default": false,
       "required": true
     },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
-    },
-    "techskillrating": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::technicalskill.technicalskill"
-    },
-    "softskillrating": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::softskillrating.softskillrating"
-    },
     "githublink": {
       "type": "string",
       "required": true,
