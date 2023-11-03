@@ -19,6 +19,12 @@
     "lastname": {
       "type": "string",
       "required": true
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::team.team",
+      "inversedBy": "teamleaders"
     }
   }
 }

@@ -31,6 +31,12 @@
     "communication": {
       "type": "decimal",
       "required": true
+    },
+    "applicants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::applicant.applicant",
+      "inversedBy": "softskillratings"
     }
   }
 }

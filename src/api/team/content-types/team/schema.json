@@ -16,15 +16,22 @@
       "type": "string",
       "required": true
     },
-    "project": {
+    "cohort": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::project.project"
+      "target": "api::cohort.cohort"
     },
-    "teamleader": {
+    "teamleaders": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::teamleader.teamleader"
+      "relation": "manyToMany",
+      "target": "api::teamleader.teamleader",
+      "mappedBy": "teams"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "teams"
     }
   }
 }

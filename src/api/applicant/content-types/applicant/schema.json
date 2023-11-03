@@ -140,20 +140,32 @@
     "keyresponsibilitiescompany2": {
       "type": "richtext"
     },
-    "softskillrating": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::softskillrating.softskillrating"
-    },
-    "techskillrating": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::technicalskill.technicalskill"
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "softskillratings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::softskillrating.softskillrating",
+      "mappedBy": "applicants"
+    },
+    "techskillratings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::technicalskill.technicalskill",
+      "mappedBy": "applicants"
+    },
+    "Program": {
+      "type": "enumeration",
+      "enum": [
+        "Data Science",
+        "FullStack",
+        "Pwd",
+        "Salesforce"
+      ],
+      "required": true
     }
   }
 }

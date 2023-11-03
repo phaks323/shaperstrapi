@@ -37,6 +37,12 @@
     },
     "skill7": {
       "type": "decimal"
+    },
+    "applicants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::applicant.applicant",
+      "inversedBy": "techskillratings"
     }
   }
 }

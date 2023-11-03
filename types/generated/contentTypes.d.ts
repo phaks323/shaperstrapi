@@ -482,6 +482,50 @@ export interface PluginUploadFolder extends Schema.CollectionType {
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 50;
+      }>;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -633,50 +677,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
-  info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<{
-        min: 1;
-        max: 50;
-      }>;
-    code: Attribute.String & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiApplicantApplicant extends Schema.CollectionType {
   collectionName: 'applicants';
   info: {
@@ -719,21 +719,25 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
     termofcontractcompany2: Attribute.Integer;
     keyresponsibilitiescompany1: Attribute.RichText;
     keyresponsibilitiescompany2: Attribute.RichText;
-    softskillrating: Attribute.Relation<
-      'api::applicant.applicant',
-      'oneToOne',
-      'api::softskillrating.softskillrating'
-    >;
-    techskillrating: Attribute.Relation<
-      'api::applicant.applicant',
-      'oneToOne',
-      'api::technicalskill.technicalskill'
-    >;
     users_permissions_user: Attribute.Relation<
       'api::applicant.applicant',
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    softskillratings: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::softskillrating.softskillrating'
+    >;
+    techskillratings: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::technicalskill.technicalskill'
+    >;
+    Program: Attribute.Enumeration<
+      ['Data Science', 'FullStack', 'Pwd', 'Salesforce']
+    > &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -766,11 +770,6 @@ export interface ApiCohortCohort extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     description: Attribute.RichText & Attribute.Required;
-    teams: Attribute.Relation<
-      'api::cohort.cohort',
-      'oneToMany',
-      'api::team.team'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -795,6 +794,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     singularName: 'project';
     pluralName: 'projects';
     displayName: 'project';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -810,6 +810,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
     screenshot5explanation: Attribute.RichText & Attribute.Required;
     screenshot6explanation: Attribute.RichText;
     screenshot7explanation: Attribute.RichText;
+    teams: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::team.team'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -828,12 +833,48 @@ export interface ApiProjectProject extends Schema.CollectionType {
   };
 }
 
+export interface ApiQualificationQuestionQualificationQuestion
+  extends Schema.CollectionType {
+  collectionName: 'qualification_questions';
+  info: {
+    singularName: 'qualification-question';
+    pluralName: 'qualification-questions';
+    displayName: 'qualification-question';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    question1: Attribute.RichText & Attribute.Required;
+    question2: Attribute.RichText & Attribute.Required;
+    question3: Attribute.RichText & Attribute.Required;
+    question4: Attribute.RichText & Attribute.Required;
+    question5: Attribute.RichText & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::qualification-question.qualification-question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::qualification-question.qualification-question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiQuizQuiz extends Schema.CollectionType {
   collectionName: 'quizzes';
   info: {
     singularName: 'quiz';
     pluralName: 'quizzes';
-    displayName: 'quiz';
+    displayName: 'contacts-questions';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -872,6 +913,11 @@ export interface ApiSoftskillratingSoftskillrating
     interpersonal: Attribute.Decimal & Attribute.Required;
     leadership: Attribute.Decimal & Attribute.Required;
     communication: Attribute.Decimal & Attribute.Required;
+    applicants: Attribute.Relation<
+      'api::softskillrating.softskillrating',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -903,15 +949,20 @@ export interface ApiTeamTeam extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    project: Attribute.Relation<
+    cohort: Attribute.Relation<
       'api::team.team',
       'oneToOne',
-      'api::project.project'
+      'api::cohort.cohort'
     >;
-    teamleader: Attribute.Relation<
+    teamleaders: Attribute.Relation<
       'api::team.team',
-      'oneToOne',
+      'manyToMany',
       'api::teamleader.teamleader'
+    >;
+    projects: Attribute.Relation<
+      'api::team.team',
+      'manyToMany',
+      'api::project.project'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -937,6 +988,11 @@ export interface ApiTeamleaderTeamleader extends Schema.CollectionType {
   attributes: {
     firstname: Attribute.String & Attribute.Required;
     lastname: Attribute.String & Attribute.Required;
+    teams: Attribute.Relation<
+      'api::teamleader.teamleader',
+      'manyToMany',
+      'api::team.team'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -974,6 +1030,11 @@ export interface ApiTechnicalskillTechnicalskill extends Schema.CollectionType {
     skill5: Attribute.Decimal & Attribute.Required;
     skill6: Attribute.Decimal;
     skill7: Attribute.Decimal;
+    applicants: Attribute.Relation<
+      'api::technicalskill.technicalskill',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1004,13 +1065,14 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
       'api::applicant.applicant': ApiApplicantApplicant;
       'api::cohort.cohort': ApiCohortCohort;
       'api::project.project': ApiProjectProject;
+      'api::qualification-question.qualification-question': ApiQualificationQuestionQualificationQuestion;
       'api::quiz.quiz': ApiQuizQuiz;
       'api::softskillrating.softskillrating': ApiSoftskillratingSoftskillrating;
       'api::team.team': ApiTeamTeam;
