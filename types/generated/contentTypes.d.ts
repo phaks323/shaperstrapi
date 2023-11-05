@@ -788,6 +788,43 @@ export interface ApiCohortCohort extends Schema.CollectionType {
   };
 }
 
+export interface ApiPersonalQuestionPersonalQuestion
+  extends Schema.CollectionType {
+  collectionName: 'personal_questions';
+  info: {
+    singularName: 'personal-question';
+    pluralName: 'personal-questions';
+    displayName: 'personal-question';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    question1: Attribute.RichText;
+    question2: Attribute.RichText;
+    question3: Attribute.RichText;
+    question4: Attribute.RichText;
+    question5: Attribute.RichText;
+    question6: Attribute.RichText;
+    question7: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::personal-question.personal-question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::personal-question.personal-question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -1053,6 +1090,42 @@ export interface ApiTechnicalskillTechnicalskill extends Schema.CollectionType {
   };
 }
 
+export interface ApiWorkHistoryQuestionWorkHistoryQuestion
+  extends Schema.CollectionType {
+  collectionName: 'work_history_questions';
+  info: {
+    singularName: 'work-history-question';
+    pluralName: 'work-history-questions';
+    displayName: 'workHistory-question';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    question1: Attribute.RichText;
+    question2: Attribute.RichText;
+    question3: Attribute.RichText;
+    question4: Attribute.RichText;
+    question5: Attribute.RichText;
+    question6: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::work-history-question.work-history-question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::work-history-question.work-history-question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1071,6 +1144,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::applicant.applicant': ApiApplicantApplicant;
       'api::cohort.cohort': ApiCohortCohort;
+      'api::personal-question.personal-question': ApiPersonalQuestionPersonalQuestion;
       'api::project.project': ApiProjectProject;
       'api::qualification-question.qualification-question': ApiQualificationQuestionQualificationQuestion;
       'api::quiz.quiz': ApiQuizQuiz;
@@ -1078,6 +1152,7 @@ declare module '@strapi/types' {
       'api::team.team': ApiTeamTeam;
       'api::teamleader.teamleader': ApiTeamleaderTeamleader;
       'api::technicalskill.technicalskill': ApiTechnicalskillTechnicalskill;
+      'api::work-history-question.work-history-question': ApiWorkHistoryQuestionWorkHistoryQuestion;
     }
   }
 }

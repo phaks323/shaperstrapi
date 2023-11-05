@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "work_history_questions",
+  "info": {
+    "singularName": "work-history-question",
+    "pluralName": "work-history-questions",
+    "displayName": "workHistory-question"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "question1": {
+      "type": "richtext"
+    },
+    "question2": {
+      "type": "richtext"
+    },
+    "question3": {
+      "type": "richtext"
+    },
+    "question4": {
+      "type": "richtext"
+    },
+    "question5": {
+      "type": "richtext"
+    },
+    "question6": {
+      "type": "richtext"
+    }
+  }
+}

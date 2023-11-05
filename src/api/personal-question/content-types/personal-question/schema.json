@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "personal_questions",
+  "info": {
+    "singularName": "personal-question",
+    "pluralName": "personal-questions",
+    "displayName": "personal-question"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "question1": {
+      "type": "richtext"
+    },
+    "question2": {
+      "type": "richtext"
+    },
+    "question3": {
+      "type": "richtext"
+    },
+    "question4": {
+      "type": "richtext"
+    },
+    "question5": {
+      "type": "richtext"
+    },
+    "question6": {
+      "type": "richtext"
+    },
+    "question7": {
+      "type": "richtext"
+    }
+  }
+}
