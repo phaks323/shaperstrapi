@@ -788,6 +788,45 @@ export interface ApiCohortCohort extends Schema.CollectionType {
   };
 }
 
+export interface ApiPersonalQuestionPersonalQuestion
+  extends Schema.CollectionType {
+  collectionName: 'personal_questions';
+  info: {
+    singularName: 'personal-question';
+    pluralName: 'personal-questions';
+    displayName: 'personal-question';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    question1: Attribute.RichText & Attribute.Required;
+    question2: Attribute.RichText & Attribute.Required;
+    question3: Attribute.RichText & Attribute.Required;
+    question4: Attribute.RichText & Attribute.Required;
+    question5: Attribute.RichText & Attribute.Required;
+    question6: Attribute.RichText;
+    question7: Attribute.RichText;
+    question8: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::personal-question.personal-question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::personal-question.personal-question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -1071,6 +1110,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::applicant.applicant': ApiApplicantApplicant;
       'api::cohort.cohort': ApiCohortCohort;
+      'api::personal-question.personal-question': ApiPersonalQuestionPersonalQuestion;
       'api::project.project': ApiProjectProject;
       'api::qualification-question.qualification-question': ApiQualificationQuestionQualificationQuestion;
       'api::quiz.quiz': ApiQuizQuiz;
