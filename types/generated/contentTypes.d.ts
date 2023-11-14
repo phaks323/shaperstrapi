@@ -794,18 +794,20 @@ export interface ApiPersonalQuestionPersonalQuestion
     singularName: 'personal-question';
     pluralName: 'personal-questions';
     displayName: 'personal-question';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    question1: Attribute.RichText;
-    question2: Attribute.RichText;
-    question3: Attribute.RichText;
-    question4: Attribute.RichText;
-    question5: Attribute.RichText;
+    question1: Attribute.RichText & Attribute.Required;
+    question2: Attribute.RichText & Attribute.Required;
+    question3: Attribute.RichText & Attribute.Required;
+    question4: Attribute.RichText & Attribute.Required;
+    question5: Attribute.RichText & Attribute.Required;
     question6: Attribute.RichText;
     question7: Attribute.RichText;
+    question8: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
