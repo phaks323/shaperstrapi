@@ -25,9 +25,6 @@
     },
     "question4": {
       "type": "richtext"
-    },
-    "question5": {
-      "type": "richtext"
     }
   }
 }

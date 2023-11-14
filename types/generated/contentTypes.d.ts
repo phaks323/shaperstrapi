@@ -736,8 +736,7 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
     >;
     Program: Attribute.Enumeration<
       ['Data Science', 'FullStack', 'Pwd', 'Salesforce']
-    > &
-      Attribute.Required;
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -921,7 +920,6 @@ export interface ApiQuizQuiz extends Schema.CollectionType {
     question2: Attribute.RichText & Attribute.Required;
     question3: Attribute.RichText;
     question4: Attribute.RichText;
-    question5: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

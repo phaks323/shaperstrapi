@@ -165,7 +165,7 @@
         "Pwd",
         "Salesforce"
       ],
-      "required": true
+      "required": false
     }
   }
 }
