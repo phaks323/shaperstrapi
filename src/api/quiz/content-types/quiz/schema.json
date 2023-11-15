@@ -12,22 +12,9 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "question1": {
+    "question": {
       "type": "richtext",
       "required": true
-    },
-    "question2": {
-      "type": "richtext",
-      "required": true
-    },
-    "question3": {
-      "type": "richtext"
-    },
-    "question4": {
-      "type": "richtext"
-    },
-    "question5": {
-      "type": "richtext"
     }
   }
 }

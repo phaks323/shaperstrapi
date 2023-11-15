@@ -56,6 +56,12 @@
       "relation": "manyToMany",
       "target": "api::team.team",
       "inversedBy": "projects"
+    },
+    "applicants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::applicant.applicant",
+      "mappedBy": "projects"
     }
   }
 }
