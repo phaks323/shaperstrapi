@@ -689,26 +689,25 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    firstname: Attribute.String;
-    lastname: Attribute.String;
-    email: Attribute.Email & Attribute.Unique;
-    idnumber: Attribute.BigInteger & Attribute.Unique;
-    phonenumber: Attribute.BigInteger;
-    dob: Attribute.Date;
-    male: Attribute.Boolean & Attribute.DefaultTo<true>;
-    southafrican: Attribute.Boolean & Attribute.DefaultTo<true>;
+    firstname: Attribute.String & Attribute.Required;
+    lastname: Attribute.String & Attribute.Required;
+    email: Attribute.Email & Attribute.Required & Attribute.Unique;
+    dob: Attribute.Date & Attribute.Required;
+    male: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    southafrican: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
     province: Attribute.String;
-    city: Attribute.String;
-    interviewspot: Attribute.Boolean & Attribute.DefaultTo<false>;
-    physicaladdress: Attribute.RichText;
+    city: Attribute.String & Attribute.Required;
+    physicaladdress: Attribute.RichText & Attribute.Required;
     postaladdress: Attribute.RichText;
-    homelanguage: Attribute.String;
+    homelanguage: Attribute.String & Attribute.Required;
     highestqualification: Attribute.String;
     nextofkin: Attribute.String;
-    noknumber: Attribute.BigInteger;
     postalcode: Attribute.Integer;
-    mie: Attribute.Boolean & Attribute.DefaultTo<false>;
-    currentlystudying: Attribute.Boolean & Attribute.DefaultTo<false>;
+    currentlystudying: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
     githublink: Attribute.String & Attribute.Unique;
     linkedinlink: Attribute.String & Attribute.Unique;
     previouscompany1: Attribute.String;
@@ -734,8 +733,14 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
       'manyToMany',
       'api::technicalskill.technicalskill'
     >;
-    Program: Attribute.Enumeration<
-      ['Data Science', 'FullStack', 'Pwd', 'Salesforce']
+    Program: Attribute.String & Attribute.Required;
+    idnumber: Attribute.String & Attribute.Required & Attribute.Unique;
+    phonenumber: Attribute.String & Attribute.Required;
+    nextofkinnumber: Attribute.String;
+    projects: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::project.project'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -800,14 +805,7 @@ export interface ApiPersonalQuestionPersonalQuestion
     draftAndPublish: true;
   };
   attributes: {
-    question1: Attribute.RichText & Attribute.Required;
-    question2: Attribute.RichText & Attribute.Required;
-    question3: Attribute.RichText & Attribute.Required;
-    question4: Attribute.RichText & Attribute.Required;
-    question5: Attribute.RichText & Attribute.Required;
-    question6: Attribute.RichText;
-    question7: Attribute.RichText;
-    question8: Attribute.RichText;
+    question: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -853,6 +851,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'manyToMany',
       'api::team.team'
     >;
+    applicants: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -878,16 +881,13 @@ export interface ApiQualificationQuestionQualificationQuestion
     singularName: 'qualification-question';
     pluralName: 'qualification-questions';
     displayName: 'qualification-question';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    question1: Attribute.RichText & Attribute.Required;
-    question2: Attribute.RichText & Attribute.Required;
-    question3: Attribute.RichText & Attribute.Required;
-    question4: Attribute.RichText & Attribute.Required;
-    question5: Attribute.RichText & Attribute.Required;
+    question: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -918,10 +918,7 @@ export interface ApiQuizQuiz extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    question1: Attribute.RichText & Attribute.Required;
-    question2: Attribute.RichText & Attribute.Required;
-    question3: Attribute.RichText;
-    question4: Attribute.RichText;
+    question: Attribute.RichText & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -14,40 +14,31 @@
   "attributes": {
     "firstname": {
       "type": "string",
-      "required": false,
+      "required": true,
       "unique": false
     },
     "lastname": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "email": {
       "type": "email",
       "unique": true,
-      "required": false
-    },
-    "idnumber": {
-      "type": "biginteger",
-      "required": false,
-      "unique": true
-    },
-    "phonenumber": {
-      "type": "biginteger",
-      "required": false
+      "required": true
     },
     "dob": {
       "type": "date",
-      "required": false
+      "required": true
     },
     "male": {
       "type": "boolean",
       "default": true,
-      "required": false
+      "required": true
     },
     "southafrican": {
       "type": "boolean",
       "default": true,
-      "required": false
+      "required": true
     },
     "province": {
       "type": "string",
@@ -55,16 +46,11 @@
     },
     "city": {
       "type": "string",
-      "required": false
-    },
-    "interviewspot": {
-      "type": "boolean",
-      "default": false,
-      "required": false
+      "required": true
     },
     "physicaladdress": {
       "type": "richtext",
-      "required": false
+      "required": true
     },
     "postaladdress": {
       "type": "richtext",
@@ -72,7 +58,7 @@
     },
     "homelanguage": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "highestqualification": {
       "type": "string",
@@ -82,23 +68,14 @@
       "type": "string",
       "required": false
     },
-    "noknumber": {
-      "required": false,
-      "type": "biginteger"
-    },
     "postalcode": {
       "type": "integer",
-      "required": false
-    },
-    "mie": {
-      "type": "boolean",
-      "default": false,
       "required": false
     },
     "currentlystudying": {
       "type": "boolean",
       "default": false,
-      "required": false
+      "required": true
     },
     "githublink": {
       "type": "string",
@@ -158,14 +135,27 @@
       "mappedBy": "applicants"
     },
     "Program": {
-      "type": "enumeration",
-      "enum": [
-        "Data Science",
-        "FullStack",
-        "Pwd",
-        "Salesforce"
-      ],
+      "type": "string",
+      "required": true
+    },
+    "idnumber": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "phonenumber": {
+      "type": "string",
+      "required": true
+    },
+    "nextofkinnumber": {
+      "type": "string",
       "required": false
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "inversedBy": "applicants"
     }
   }
 }
