@@ -20,11 +20,23 @@
       "type": "string",
       "required": true
     },
+    "applicants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::applicant.applicant",
+      "mappedBy": "teamleaders"
+    },
     "teams": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::team.team",
-      "inversedBy": "teamleaders"
+      "mappedBy": "teamleaders"
+    },
+    "cohorts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cohort.cohort",
+      "mappedBy": "teamleaders"
     }
   }
 }

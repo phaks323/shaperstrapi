@@ -15,6 +15,17 @@
     "question": {
       "type": "richtext",
       "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Radio",
+        "Select",
+        "Text",
+        "Date",
+        "Number"
+      ],
+      "required": true
     }
   }
 }

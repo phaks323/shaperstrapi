@@ -42,7 +42,94 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::applicant.applicant",
-      "inversedBy": "techskillratings"
+      "mappedBy": "techskillratings"
+    },
+    "skill1_name": {
+      "type": "enumeration",
+      "enum": [
+        "ReactJS",
+        "Python",
+        "Machine Learning",
+        "Databases",
+        "SQL",
+        "CSS",
+        "Django",
+        "Javascript",
+        "HTML",
+        "Angular",
+        "Bootstrap",
+        "Visualisation"
+      ],
+      "required": true
+    },
+    "skill2_name": {
+      "type": "enumeration",
+      "enum": [
+        "ReactJS",
+        "Python",
+        "Machine Learning",
+        "Databases",
+        "SQL",
+        "CSS",
+        "Django",
+        "Javascript",
+        "HTML",
+        "Angular",
+        "Bootstrap",
+        "Visualisation"
+      ]
+    },
+    "skill3_name": {
+      "type": "enumeration",
+      "enum": [
+        "ReactJS",
+        "Python",
+        "Machine Learning",
+        "Databases",
+        "SQL",
+        "CSS",
+        "Django",
+        "Javascript",
+        "HTML",
+        "Angular",
+        "Bootstrap",
+        "Visualisation"
+      ]
+    },
+    "skill4_name": {
+      "type": "enumeration",
+      "enum": [
+        "ReactJS",
+        "Python",
+        "Machine Learning",
+        "Databases",
+        "SQL",
+        "CSS",
+        "Django",
+        "Javascript",
+        "HTML",
+        "Angular",
+        "Bootstrap",
+        "Visualisation"
+      ]
+    },
+    "skill5_name": {
+      "type": "enumeration",
+      "enum": [
+        "ReactJS",
+        "Python",
+        "Machine Learning",
+        "Databases",
+        "SQL",
+        "CSS",
+        "Django",
+        "Javascript",
+        "HTML",
+        "Angular",
+        "Bootstrap",
+        "Visualisation"
+      ],
+      "required": true
     }
   }
 }

@@ -51,16 +51,22 @@
     "screenshot7explanation": {
       "type": "richtext"
     },
+    "applicants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::applicant.applicant",
+      "mappedBy": "projects"
+    },
     "teams": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::team.team",
       "inversedBy": "projects"
     },
-    "applicants": {
+    "cohorts": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::applicant.applicant",
+      "target": "api::cohort.cohort",
       "mappedBy": "projects"
     }
   }

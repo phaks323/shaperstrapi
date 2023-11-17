@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "personalcategoricalquestions",
+  "info": {
+    "singularName": "personalcategoricalquestion",
+    "pluralName": "personalcategoricalquestions",
+    "displayName": "personalcategoricalquestion"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Gender": {
+      "type": "enumeration",
+      "enum": [
+        "MALE",
+        "FEMALE"
+      ],
+      "required": true
+    }
+  }
+}

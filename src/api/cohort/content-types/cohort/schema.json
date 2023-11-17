@@ -19,6 +19,30 @@
     "description": {
       "type": "richtext",
       "required": true
+    },
+    "applicants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::applicant.applicant",
+      "mappedBy": "cohorts"
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::team.team",
+      "inversedBy": "cohorts"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "inversedBy": "cohorts"
+    },
+    "teamleaders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::teamleader.teamleader",
+      "inversedBy": "cohorts"
     }
   }
 }
