@@ -16,21 +16,28 @@
       "type": "string",
       "required": true
     },
-    "cohort": {
+    "applicants": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::cohort.cohort"
+      "relation": "manyToMany",
+      "target": "api::applicant.applicant",
+      "mappedBy": "teams"
     },
     "teamleaders": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::teamleader.teamleader",
-      "mappedBy": "teams"
+      "inversedBy": "teams"
     },
     "projects": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::project.project",
+      "mappedBy": "teams"
+    },
+    "cohorts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cohort.cohort",
       "mappedBy": "teams"
     }
   }

@@ -12,31 +12,29 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "teamwork": {
-      "type": "decimal",
-      "required": true
+    "applicants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::applicant.applicant",
+      "mappedBy": "softskillratings"
     },
     "problemsolving": {
       "type": "decimal",
       "required": true
     },
     "interpersonal": {
-      "type": "decimal",
-      "required": true
+      "type": "decimal"
+    },
+    "teamwork": {
+      "type": "decimal"
+    },
+    "communication": {
+      "required": true,
+      "type": "decimal"
     },
     "leadership": {
       "type": "decimal",
       "required": true
-    },
-    "communication": {
-      "type": "decimal",
-      "required": true
-    },
-    "applicants": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::applicant.applicant",
-      "inversedBy": "softskillratings"
     }
   }
 }

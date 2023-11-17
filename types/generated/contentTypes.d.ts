@@ -718,29 +718,40 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
     termofcontractcompany2: Attribute.Integer;
     keyresponsibilitiescompany1: Attribute.RichText;
     keyresponsibilitiescompany2: Attribute.RichText;
-    users_permissions_user: Attribute.Relation<
+    Program: Attribute.String & Attribute.Required;
+    idnumber: Attribute.String & Attribute.Required & Attribute.Unique;
+    phonenumber: Attribute.String & Attribute.Required;
+    nextofkinnumber: Attribute.String;
+    techskillratings: Attribute.Relation<
       'api::applicant.applicant',
-      'oneToOne',
-      'plugin::users-permissions.user'
+      'manyToMany',
+      'api::technicalskill.technicalskill'
     >;
     softskillratings: Attribute.Relation<
       'api::applicant.applicant',
       'manyToMany',
       'api::softskillrating.softskillrating'
     >;
-    techskillratings: Attribute.Relation<
-      'api::applicant.applicant',
-      'manyToMany',
-      'api::technicalskill.technicalskill'
-    >;
-    Program: Attribute.String & Attribute.Required;
-    idnumber: Attribute.String & Attribute.Required & Attribute.Unique;
-    phonenumber: Attribute.String & Attribute.Required;
-    nextofkinnumber: Attribute.String;
     projects: Attribute.Relation<
       'api::applicant.applicant',
       'manyToMany',
       'api::project.project'
+    >;
+    imageurl: Attribute.String;
+    teamleaders: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::teamleader.teamleader'
+    >;
+    teams: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::team.team'
+    >;
+    cohorts: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::cohort.cohort'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -774,6 +785,26 @@ export interface ApiCohortCohort extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     description: Attribute.RichText & Attribute.Required;
+    applicants: Attribute.Relation<
+      'api::cohort.cohort',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
+    teams: Attribute.Relation<
+      'api::cohort.cohort',
+      'manyToMany',
+      'api::team.team'
+    >;
+    projects: Attribute.Relation<
+      'api::cohort.cohort',
+      'manyToMany',
+      'api::project.project'
+    >;
+    teamleaders: Attribute.Relation<
+      'api::cohort.cohort',
+      'manyToMany',
+      'api::teamleader.teamleader'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -806,6 +837,8 @@ export interface ApiPersonalQuestionPersonalQuestion
   };
   attributes: {
     question: Attribute.RichText & Attribute.Required;
+    type: Attribute.Enumeration<['Radio', 'Select', 'Text', 'Date', 'Number']> &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -817,6 +850,37 @@ export interface ApiPersonalQuestionPersonalQuestion
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::personal-question.personal-question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPersonalcategoricalquestionPersonalcategoricalquestion
+  extends Schema.CollectionType {
+  collectionName: 'personalcategoricalquestions';
+  info: {
+    singularName: 'personalcategoricalquestion';
+    pluralName: 'personalcategoricalquestions';
+    displayName: 'personalcategoricalquestion';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Gender: Attribute.Enumeration<['MALE', 'FEMALE']> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::personalcategoricalquestion.personalcategoricalquestion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::personalcategoricalquestion.personalcategoricalquestion',
       'oneToOne',
       'admin::user'
     > &
@@ -846,15 +910,20 @@ export interface ApiProjectProject extends Schema.CollectionType {
     screenshot5explanation: Attribute.RichText & Attribute.Required;
     screenshot6explanation: Attribute.RichText;
     screenshot7explanation: Attribute.RichText;
+    applicants: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
     teams: Attribute.Relation<
       'api::project.project',
       'manyToMany',
       'api::team.team'
     >;
-    applicants: Attribute.Relation<
+    cohorts: Attribute.Relation<
       'api::project.project',
       'manyToMany',
-      'api::applicant.applicant'
+      'api::cohort.cohort'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -888,6 +957,7 @@ export interface ApiQualificationQuestionQualificationQuestion
   };
   attributes: {
     question: Attribute.RichText & Attribute.Required;
+    type: Attribute.Enumeration<['Radio', 'Select', 'Text', 'Date', 'Number']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -919,6 +989,8 @@ export interface ApiQuizQuiz extends Schema.CollectionType {
   };
   attributes: {
     question: Attribute.RichText & Attribute.Required;
+    type: Attribute.Enumeration<['Radio', 'Select', 'Text', 'Date', 'Number']> &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -942,16 +1014,16 @@ export interface ApiSoftskillratingSoftskillrating
     draftAndPublish: true;
   };
   attributes: {
-    teamwork: Attribute.Decimal & Attribute.Required;
-    problemsolving: Attribute.Decimal & Attribute.Required;
-    interpersonal: Attribute.Decimal & Attribute.Required;
-    leadership: Attribute.Decimal & Attribute.Required;
-    communication: Attribute.Decimal & Attribute.Required;
     applicants: Attribute.Relation<
       'api::softskillrating.softskillrating',
       'manyToMany',
       'api::applicant.applicant'
     >;
+    problemsolving: Attribute.Decimal & Attribute.Required;
+    interpersonal: Attribute.Decimal;
+    teamwork: Attribute.Decimal;
+    communication: Attribute.Decimal & Attribute.Required;
+    leadership: Attribute.Decimal & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -983,10 +1055,10 @@ export interface ApiTeamTeam extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    cohort: Attribute.Relation<
+    applicants: Attribute.Relation<
       'api::team.team',
-      'oneToOne',
-      'api::cohort.cohort'
+      'manyToMany',
+      'api::applicant.applicant'
     >;
     teamleaders: Attribute.Relation<
       'api::team.team',
@@ -997,6 +1069,11 @@ export interface ApiTeamTeam extends Schema.CollectionType {
       'api::team.team',
       'manyToMany',
       'api::project.project'
+    >;
+    cohorts: Attribute.Relation<
+      'api::team.team',
+      'manyToMany',
+      'api::cohort.cohort'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1022,10 +1099,20 @@ export interface ApiTeamleaderTeamleader extends Schema.CollectionType {
   attributes: {
     firstname: Attribute.String & Attribute.Required;
     lastname: Attribute.String & Attribute.Required;
+    applicants: Attribute.Relation<
+      'api::teamleader.teamleader',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
     teams: Attribute.Relation<
       'api::teamleader.teamleader',
       'manyToMany',
       'api::team.team'
+    >;
+    cohorts: Attribute.Relation<
+      'api::teamleader.teamleader',
+      'manyToMany',
+      'api::cohort.cohort'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1069,6 +1156,88 @@ export interface ApiTechnicalskillTechnicalskill extends Schema.CollectionType {
       'manyToMany',
       'api::applicant.applicant'
     >;
+    skill1_name: Attribute.Enumeration<
+      [
+        'ReactJS',
+        'Python',
+        'Machine Learning',
+        'Databases',
+        'SQL',
+        'CSS',
+        'Django',
+        'Javascript',
+        'HTML',
+        'Angular',
+        'Bootstrap',
+        'Visualisation'
+      ]
+    > &
+      Attribute.Required;
+    skill2_name: Attribute.Enumeration<
+      [
+        'ReactJS',
+        'Python',
+        'Machine Learning',
+        'Databases',
+        'SQL',
+        'CSS',
+        'Django',
+        'Javascript',
+        'HTML',
+        'Angular',
+        'Bootstrap',
+        'Visualisation'
+      ]
+    >;
+    skill3_name: Attribute.Enumeration<
+      [
+        'ReactJS',
+        'Python',
+        'Machine Learning',
+        'Databases',
+        'SQL',
+        'CSS',
+        'Django',
+        'Javascript',
+        'HTML',
+        'Angular',
+        'Bootstrap',
+        'Visualisation'
+      ]
+    >;
+    skill4_name: Attribute.Enumeration<
+      [
+        'ReactJS',
+        'Python',
+        'Machine Learning',
+        'Databases',
+        'SQL',
+        'CSS',
+        'Django',
+        'Javascript',
+        'HTML',
+        'Angular',
+        'Bootstrap',
+        'Visualisation'
+      ]
+    >;
+    skill5_name: Attribute.Enumeration<
+      [
+        'ReactJS',
+        'Python',
+        'Machine Learning',
+        'Databases',
+        'SQL',
+        'CSS',
+        'Django',
+        'Javascript',
+        'HTML',
+        'Angular',
+        'Bootstrap',
+        'Visualisation'
+      ]
+    > &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1142,6 +1311,7 @@ declare module '@strapi/types' {
       'api::applicant.applicant': ApiApplicantApplicant;
       'api::cohort.cohort': ApiCohortCohort;
       'api::personal-question.personal-question': ApiPersonalQuestionPersonalQuestion;
+      'api::personalcategoricalquestion.personalcategoricalquestion': ApiPersonalcategoricalquestionPersonalcategoricalquestion;
       'api::project.project': ApiProjectProject;
       'api::qualification-question.qualification-question': ApiQualificationQuestionQualificationQuestion;
       'api::quiz.quiz': ApiQuizQuiz;
