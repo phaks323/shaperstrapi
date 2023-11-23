@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "responsibilities",
+  "info": {
+    "singularName": "responsibilitie",
+    "pluralName": "responsibilities",
+    "displayName": "responsibility",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "responsibility1": {
+      "type": "richtext"
+    },
+    "responsibility2": {
+      "type": "richtext"
+    },
+    "responsibility3": {
+      "type": "richtext"
+    },
+    "responsibility4": {
+      "type": "richtext"
+    },
+    "responsibility5": {
+      "type": "richtext"
+    }
+  }
+}

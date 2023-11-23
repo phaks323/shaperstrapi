@@ -130,6 +130,9 @@
         "Visualisation"
       ],
       "required": true
+    },
+    "skillz": {
+      "type": "string"
     }
   }
 }

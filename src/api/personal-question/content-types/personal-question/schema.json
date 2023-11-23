@@ -26,6 +26,9 @@
         "Number"
       ],
       "required": true
+    },
+    "option": {
+      "type": "richtext"
     }
   }
 }

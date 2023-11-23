@@ -823,6 +823,39 @@ export interface ApiCohortCohort extends Schema.CollectionType {
   };
 }
 
+export interface ApiContactDetailContactDetail extends Schema.CollectionType {
+  collectionName: 'contact_details';
+  info: {
+    singularName: 'contact-detail';
+    pluralName: 'contact-details';
+    displayName: 'contact-detail';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    question: Attribute.RichText & Attribute.Required;
+    option: Attribute.RichText;
+    type: Attribute.Enumeration<['Radio', 'Select', 'Text', 'Date', 'Number']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-detail.contact-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-detail.contact-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPersonalQuestionPersonalQuestion
   extends Schema.CollectionType {
   collectionName: 'personal_questions';
@@ -839,6 +872,7 @@ export interface ApiPersonalQuestionPersonalQuestion
     question: Attribute.RichText & Attribute.Required;
     type: Attribute.Enumeration<['Radio', 'Select', 'Text', 'Date', 'Number']> &
       Attribute.Required;
+    option: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -958,6 +992,7 @@ export interface ApiQualificationQuestionQualificationQuestion
   attributes: {
     question: Attribute.RichText & Attribute.Required;
     type: Attribute.Enumeration<['Radio', 'Select', 'Text', 'Date', 'Number']>;
+    option: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -991,6 +1026,7 @@ export interface ApiQuizQuiz extends Schema.CollectionType {
     question: Attribute.RichText & Attribute.Required;
     type: Attribute.Enumeration<['Radio', 'Select', 'Text', 'Date', 'Number']> &
       Attribute.Required;
+    option: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1310,6 +1346,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::applicant.applicant': ApiApplicantApplicant;
       'api::cohort.cohort': ApiCohortCohort;
+      'api::contact-detail.contact-detail': ApiContactDetailContactDetail;
       'api::personal-question.personal-question': ApiPersonalQuestionPersonalQuestion;
       'api::personalcategoricalquestion.personalcategoricalquestion': ApiPersonalcategoricalquestionPersonalcategoricalquestion;
       'api::project.project': ApiProjectProject;
