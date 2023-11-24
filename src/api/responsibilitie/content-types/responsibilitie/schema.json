@@ -12,26 +12,18 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "responsibility1": {
-      "type": "richtext"
-    },
-    "responsibility2": {
-      "type": "richtext"
-    },
-    "responsibility3": {
-      "type": "richtext"
-    },
-    "responsibility4": {
-      "type": "richtext"
-    },
-    "responsibility5": {
-      "type": "richtext"
-    },
     "applicants": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::applicant.applicant",
       "mappedBy": "responsibilities"
+    },
+    "Responsibilities": {
+      "type": "enumeration",
+      "enum": [
+        "Front-end using AngularJS",
+        "Back-end Using NodeJS"
+      ]
     }
   }
 }
