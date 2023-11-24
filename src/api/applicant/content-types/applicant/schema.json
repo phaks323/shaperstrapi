@@ -172,6 +172,12 @@
       "relation": "manyToMany",
       "target": "api::cohort.cohort",
       "inversedBy": "applicants"
+    },
+    "responsibilities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::responsibilitie.responsibilitie",
+      "inversedBy": "applicants"
     }
   }
 }

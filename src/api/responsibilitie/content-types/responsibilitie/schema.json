@@ -4,7 +4,7 @@
   "info": {
     "singularName": "responsibilitie",
     "pluralName": "responsibilities",
-    "displayName": "responsibility",
+    "displayName": "responsibilitie",
     "description": ""
   },
   "options": {
@@ -26,6 +26,12 @@
     },
     "responsibility5": {
       "type": "richtext"
+    },
+    "applicants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::applicant.applicant",
+      "mappedBy": "responsibilities"
     }
   }
 }
