@@ -753,6 +753,11 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
       'manyToMany',
       'api::cohort.cohort'
     >;
+    responsibilities: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::responsibilitie.responsibilitie'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -891,37 +896,6 @@ export interface ApiPersonalQuestionPersonalQuestion
   };
 }
 
-export interface ApiPersonalcategoricalquestionPersonalcategoricalquestion
-  extends Schema.CollectionType {
-  collectionName: 'personalcategoricalquestions';
-  info: {
-    singularName: 'personalcategoricalquestion';
-    pluralName: 'personalcategoricalquestions';
-    displayName: 'personalcategoricalquestion';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Gender: Attribute.Enumeration<['MALE', 'FEMALE']> & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::personalcategoricalquestion.personalcategoricalquestion',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::personalcategoricalquestion.personalcategoricalquestion',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -1011,28 +985,41 @@ export interface ApiQualificationQuestionQualificationQuestion
   };
 }
 
-export interface ApiQuizQuiz extends Schema.CollectionType {
-  collectionName: 'quizzes';
+export interface ApiResponsibilitieResponsibilitie
+  extends Schema.CollectionType {
+  collectionName: 'responsibilities';
   info: {
-    singularName: 'quiz';
-    pluralName: 'quizzes';
-    displayName: 'contacts-questions';
+    singularName: 'responsibilitie';
+    pluralName: 'responsibilities';
+    displayName: 'responsibilitie';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    question: Attribute.RichText & Attribute.Required;
-    type: Attribute.Enumeration<['Radio', 'Select', 'Text', 'Date', 'Number']> &
-      Attribute.Required;
-    option: Attribute.RichText;
+    applicants: Attribute.Relation<
+      'api::responsibilitie.responsibilitie',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
+    Responsibilities: Attribute.Enumeration<
+      ['Front-end using AngularJS', 'Back-end Using NodeJS']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'api::responsibilitie.responsibilitie',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'api::responsibilitie.responsibilitie',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -1274,6 +1261,7 @@ export interface ApiTechnicalskillTechnicalskill extends Schema.CollectionType {
       ]
     > &
       Attribute.Required;
+    skillz: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1348,10 +1336,9 @@ declare module '@strapi/types' {
       'api::cohort.cohort': ApiCohortCohort;
       'api::contact-detail.contact-detail': ApiContactDetailContactDetail;
       'api::personal-question.personal-question': ApiPersonalQuestionPersonalQuestion;
-      'api::personalcategoricalquestion.personalcategoricalquestion': ApiPersonalcategoricalquestionPersonalcategoricalquestion;
       'api::project.project': ApiProjectProject;
       'api::qualification-question.qualification-question': ApiQualificationQuestionQualificationQuestion;
-      'api::quiz.quiz': ApiQuizQuiz;
+      'api::responsibilitie.responsibilitie': ApiResponsibilitieResponsibilitie;
       'api::softskillrating.softskillrating': ApiSoftskillratingSoftskillrating;
       'api::team.team': ApiTeamTeam;
       'api::teamleader.teamleader': ApiTeamleaderTeamleader;
