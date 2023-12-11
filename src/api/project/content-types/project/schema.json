@@ -68,6 +68,30 @@
       "relation": "manyToMany",
       "target": "api::cohort.cohort",
       "mappedBy": "projects"
+    },
+    "imageurl": {
+      "type": "string"
+    },
+    "screenshot1_image": {
+      "type": "string"
+    },
+    "screenshot2_image": {
+      "type": "string"
+    },
+    "screenshot3_image": {
+      "type": "string"
+    },
+    "screenshot4_image": {
+      "type": "string"
+    },
+    "screenshot5_image": {
+      "type": "string"
+    },
+    "screenshot6_image": {
+      "type": "string"
+    },
+    "screenshot7_image": {
+      "type": "string"
     }
   }
 }

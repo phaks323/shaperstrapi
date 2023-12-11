@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shaper_reviews",
+  "info": {
+    "singularName": "shaper-review",
+    "pluralName": "shaper-reviews",
+    "displayName": "shaper-review",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "review": {
+      "type": "blocks"
+    },
+    "applicants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::applicant.applicant",
+      "inversedBy": "shaper_reviews"
+    }
+  }
+}

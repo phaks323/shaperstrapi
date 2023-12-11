@@ -35,6 +35,16 @@
     "leadership": {
       "type": "decimal",
       "required": true
+    },
+    "mostimproved": {
+      "type": "enumeration",
+      "enum": [
+        "communication",
+        "teamwork",
+        "leadership",
+        "interpersonal",
+        "problemsolving"
+      ]
     }
   }
 }

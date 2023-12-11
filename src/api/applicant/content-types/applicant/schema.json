@@ -14,31 +14,31 @@
   "attributes": {
     "firstname": {
       "type": "string",
-      "required": true,
+      "required": false,
       "unique": false
     },
     "lastname": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "email": {
       "type": "email",
       "unique": true,
-      "required": true
+      "required": false
     },
     "dob": {
       "type": "date",
-      "required": true
+      "required": false
     },
     "male": {
       "type": "boolean",
       "default": true,
-      "required": true
+      "required": false
     },
     "southafrican": {
       "type": "boolean",
       "default": true,
-      "required": true
+      "required": false
     },
     "province": {
       "type": "string",
@@ -46,11 +46,11 @@
     },
     "city": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "physicaladdress": {
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "postaladdress": {
       "type": "richtext",
@@ -58,7 +58,7 @@
     },
     "homelanguage": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "highestqualification": {
       "type": "string",
@@ -75,7 +75,7 @@
     "currentlystudying": {
       "type": "boolean",
       "default": false,
-      "required": true
+      "required": false
     },
     "githublink": {
       "type": "string",
@@ -119,16 +119,16 @@
     },
     "Program": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "idnumber": {
       "type": "string",
-      "required": true,
+      "required": false,
       "unique": true
     },
     "phonenumber": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "nextofkinnumber": {
       "type": "string",
@@ -178,6 +178,12 @@
       "relation": "manyToMany",
       "target": "api::responsibilitie.responsibilitie",
       "inversedBy": "applicants"
+    },
+    "shaper_reviews": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::shaper-review.shaper-review",
+      "mappedBy": "applicants"
     }
   }
 }
