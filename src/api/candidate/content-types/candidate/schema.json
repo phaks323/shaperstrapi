@@ -1,0 +1,105 @@
+{
+  "kind": "collectionType",
+  "collectionName": "candidates",
+  "info": {
+    "singularName": "candidate",
+    "pluralName": "candidates",
+    "displayName": "candidate"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "dob": {
+      "type": "date"
+    },
+    "male": {
+      "type": "boolean"
+    },
+    "southafrican": {
+      "type": "boolean"
+    },
+    "province": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "physicaladdress": {
+      "type": "blocks"
+    },
+    "postaladdress": {
+      "type": "blocks"
+    },
+    "homelanguage": {
+      "type": "string"
+    },
+    "highestqualification": {
+      "type": "string"
+    },
+    "nextofkin": {
+      "type": "string"
+    },
+    "postalcode": {
+      "type": "integer"
+    },
+    "currentlystudying": {
+      "type": "boolean"
+    },
+    "githublink": {
+      "type": "string"
+    },
+    "linkedinlink": {
+      "type": "string"
+    },
+    "previouscompany1": {
+      "type": "string"
+    },
+    "previouscompany2": {
+      "type": "string"
+    },
+    "company1position": {
+      "type": "string"
+    },
+    "company2position": {
+      "type": "string"
+    },
+    "termofcontractcompany1": {
+      "type": "integer"
+    },
+    "termofcontractcompany2": {
+      "type": "integer"
+    },
+    "keyresponsibilitiescompany1": {
+      "type": "blocks"
+    },
+    "keyresponsibilitiescompany2": {
+      "type": "blocks"
+    },
+    "Program": {
+      "type": "string"
+    },
+    "idnumber": {
+      "type": "string"
+    },
+    "phonenumber": {
+      "type": "string"
+    },
+    "nextofkinnumber": {
+      "type": "string"
+    },
+    "imageurl": {
+      "type": "string"
+    }
+  }
+}

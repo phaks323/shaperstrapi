@@ -4,7 +4,7 @@
   "info": {
     "singularName": "applicant",
     "pluralName": "applicants",
-    "displayName": "applicant",
+    "displayName": "learners",
     "description": ""
   },
   "options": {
@@ -179,11 +179,11 @@
       "target": "api::responsibilitie.responsibilitie",
       "inversedBy": "applicants"
     },
-    "shaper_reviews": {
+    "shaperreviews": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::shaper-review.shaper-review",
-      "mappedBy": "applicants"
+      "target": "api::shaperreview.shaperreview",
+      "mappedBy": "learners"
     }
   }
 }

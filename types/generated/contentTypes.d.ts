@@ -682,7 +682,7 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
   info: {
     singularName: 'applicant';
     pluralName: 'applicants';
-    displayName: 'applicant';
+    displayName: 'learners';
     description: '';
   };
   options: {
@@ -754,10 +754,10 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
       'manyToMany',
       'api::responsibilitie.responsibilitie'
     >;
-    shaper_reviews: Attribute.Relation<
+    shaperreviews: Attribute.Relation<
       'api::applicant.applicant',
       'manyToMany',
-      'api::shaper-review.shaper-review'
+      'api::shaperreview.shaperreview'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -770,6 +770,65 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::applicant.applicant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCandidateCandidate extends Schema.CollectionType {
+  collectionName: 'candidates';
+  info: {
+    singularName: 'candidate';
+    pluralName: 'candidates';
+    displayName: 'candidate';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    firstname: Attribute.String;
+    lastname: Attribute.String;
+    email: Attribute.Email;
+    dob: Attribute.Date;
+    male: Attribute.Boolean;
+    southafrican: Attribute.Boolean;
+    province: Attribute.String;
+    city: Attribute.String;
+    physicaladdress: Attribute.Blocks;
+    postaladdress: Attribute.Blocks;
+    homelanguage: Attribute.String;
+    highestqualification: Attribute.String;
+    nextofkin: Attribute.String;
+    postalcode: Attribute.Integer;
+    currentlystudying: Attribute.Boolean;
+    githublink: Attribute.String;
+    linkedinlink: Attribute.String;
+    previouscompany1: Attribute.String;
+    previouscompany2: Attribute.String;
+    company1position: Attribute.String;
+    company2position: Attribute.String;
+    termofcontractcompany1: Attribute.Integer;
+    termofcontractcompany2: Attribute.Integer;
+    keyresponsibilitiescompany1: Attribute.Blocks;
+    keyresponsibilitiescompany2: Attribute.Blocks;
+    Program: Attribute.String;
+    idnumber: Attribute.String;
+    phonenumber: Attribute.String;
+    nextofkinnumber: Attribute.String;
+    imageurl: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::candidate.candidate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::candidate.candidate',
       'oneToOne',
       'admin::user'
     > &
@@ -811,6 +870,230 @@ export interface ApiCohortCohort extends Schema.CollectionType {
       'manyToMany',
       'api::teamleader.teamleader'
     >;
+    skill1: Attribute.Enumeration<
+      [
+        'ReactJS',
+        'Python',
+        'Machine Learning',
+        'Databases',
+        'SQL',
+        'CSS',
+        'Django',
+        'Javascript',
+        'HTML',
+        'Angular',
+        'Bootstrap',
+        'Visualisation'
+      ]
+    >;
+    skill2: Attribute.Enumeration<
+      [
+        'ReactJS',
+        'Python',
+        'Machine Learning',
+        'Databases',
+        'SQL',
+        'CSS',
+        'Django',
+        'Javascript',
+        'HTML',
+        'Angular',
+        'Bootstrap',
+        'Visualisation'
+      ]
+    >;
+    skill3: Attribute.Enumeration<
+      [
+        'ReactJS',
+        'Python',
+        'Machine Learning',
+        'Databases',
+        'SQL',
+        'CSS',
+        'Django',
+        'Javascript',
+        'HTML',
+        'Angular',
+        'Bootstrap',
+        'Visualisation'
+      ]
+    >;
+    skill4: Attribute.Enumeration<
+      [
+        'ReactJS',
+        'Python',
+        'Machine Learning',
+        'Databases',
+        'SQL',
+        'CSS',
+        'Django',
+        'Javascript',
+        'HTML',
+        'Angular',
+        'Bootstrap',
+        'Visualisation'
+      ]
+    >;
+    skill5: Attribute.Enumeration<
+      [
+        'ReactJS',
+        'Python',
+        'Machine Learning',
+        'Databases',
+        'SQL',
+        'CSS',
+        'Django',
+        'Javascript',
+        'HTML',
+        'Angular',
+        'Bootstrap',
+        'Visualisation'
+      ]
+    >;
+    skill6: Attribute.Enumeration<
+      [
+        'ReactJS',
+        'Python',
+        'Machine Learning',
+        'Databases',
+        'SQL',
+        'CSS',
+        'Django',
+        'Javascript',
+        'HTML',
+        'Angular',
+        'Bootstrap',
+        'Visualisation'
+      ]
+    >;
+    skill7: Attribute.Enumeration<
+      [
+        'ReactJS',
+        'Python',
+        'Machine Learning',
+        'Databases',
+        'SQL',
+        'CSS',
+        'Django',
+        'Javascript',
+        'HTML',
+        'Angular',
+        'Bootstrap',
+        'Visualisation'
+      ]
+    >;
+    skill1_icon: Attribute.Enumeration<
+      [
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/django-icon.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/css-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/html-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/angular-solid.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/bootstrap-wordmark.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/database.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/javascript-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/machine-learning.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/powerbi.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/python-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/react-line.svg'
+      ]
+    >;
+    skill2_icon: Attribute.Enumeration<
+      [
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/django-icon.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/css-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/html-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/angular-solid.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/bootstrap-wordmark.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/database.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/javascript-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/machine-learning.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/powerbi.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/python-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/react-line.svg'
+      ]
+    >;
+    skill3_icon: Attribute.Enumeration<
+      [
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/django-icon.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/css-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/html-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/angular-solid.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/bootstrap-wordmark.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/database.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/javascript-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/machine-learning.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/powerbi.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/python-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/react-line.svg'
+      ]
+    >;
+    skill4_icon: Attribute.Enumeration<
+      [
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/django-icon.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/css-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/html-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/angular-solid.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/bootstrap-wordmark.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/database.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/javascript-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/machine-learning.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/powerbi.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/python-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/react-line.svg'
+      ]
+    >;
+    skill5_icon: Attribute.Enumeration<
+      [
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/django-icon.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/css-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/html-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/angular-solid.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/bootstrap-wordmark.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/database.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/javascript-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/machine-learning.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/powerbi.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/python-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/react-line.svg'
+      ]
+    >;
+    skill6_icon: Attribute.Enumeration<
+      [
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/django-icon.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/css-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/html-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/angular-solid.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/bootstrap-wordmark.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/database.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/javascript-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/machine-learning.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/powerbi.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/python-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/react-line.svg'
+      ]
+    >;
+    skill7_icon: Attribute.Enumeration<
+      [
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/django-icon.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/css-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/html-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/angular-solid.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/bootstrap-wordmark.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/database.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/javascript-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/machine-learning.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/powerbi.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/python-fill.svg',
+        'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/react-line.svg'
+      ]
+    >;
+    skill1_description: Attribute.Blocks;
+    skill2_description: Attribute.Blocks;
+    skill3_description: Attribute.Blocks;
+    skill4_description: Attribute.Blocks;
+    skill5_description: Attribute.Blocks;
+    skill6_description: Attribute.Blocks;
+    skill7_description: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -855,6 +1138,65 @@ export interface ApiContactDetailContactDetail extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::contact-detail.contact-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiList1List1 extends Schema.CollectionType {
+  collectionName: 'list1s';
+  info: {
+    singularName: 'list1';
+    pluralName: 'list1s';
+    displayName: 'list1';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    firstname: Attribute.String;
+    lastname: Attribute.String;
+    email: Attribute.Email;
+    dob: Attribute.Date;
+    male: Attribute.Boolean;
+    southafrican: Attribute.Boolean;
+    province: Attribute.String;
+    city: Attribute.String;
+    physicaladdress: Attribute.Blocks;
+    postaladdress: Attribute.Blocks;
+    homelanguage: Attribute.String;
+    highestqualification: Attribute.String;
+    nextofkin: Attribute.String;
+    postalcode: Attribute.Integer;
+    currentlystudying: Attribute.Boolean;
+    githublink: Attribute.String;
+    linkedinlink: Attribute.String;
+    previouscompany1: Attribute.String;
+    previouscompany2: Attribute.String;
+    company1position: Attribute.String;
+    company2position: Attribute.String;
+    termofcontractcompany1: Attribute.Integer;
+    termofcontractcompany2: Attribute.Integer;
+    keyresponsibilitiescompany1: Attribute.Blocks;
+    keyresponsibilitiescompany2: Attribute.Blocks;
+    Program: Attribute.String;
+    idnumber: Attribute.String;
+    phonenumber: Attribute.String;
+    nextofkinumber: Attribute.String;
+    imageurl: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::list1.list1',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::list1.list1',
       'oneToOne',
       'admin::user'
     > &
@@ -1045,21 +1387,20 @@ export interface ApiResponsibilitieResponsibilitie
   };
 }
 
-export interface ApiShaperReviewShaperReview extends Schema.CollectionType {
-  collectionName: 'shaper_reviews';
+export interface ApiShaperreviewShaperreview extends Schema.CollectionType {
+  collectionName: 'shaperreviews';
   info: {
-    singularName: 'shaper-review';
-    pluralName: 'shaper-reviews';
-    displayName: 'shaper-review';
-    description: '';
+    singularName: 'shaperreview';
+    pluralName: 'shaperreviews';
+    displayName: 'shaperreview';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     review: Attribute.Blocks;
-    applicants: Attribute.Relation<
-      'api::shaper-review.shaper-review',
+    learners: Attribute.Relation<
+      'api::shaperreview.shaperreview',
       'manyToMany',
       'api::applicant.applicant'
     >;
@@ -1067,13 +1408,13 @@ export interface ApiShaperReviewShaperReview extends Schema.CollectionType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::shaper-review.shaper-review',
+      'api::shaperreview.shaperreview',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::shaper-review.shaper-review',
+      'api::shaperreview.shaperreview',
       'oneToOne',
       'admin::user'
     > &
@@ -1489,13 +1830,15 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::applicant.applicant': ApiApplicantApplicant;
+      'api::candidate.candidate': ApiCandidateCandidate;
       'api::cohort.cohort': ApiCohortCohort;
       'api::contact-detail.contact-detail': ApiContactDetailContactDetail;
+      'api::list1.list1': ApiList1List1;
       'api::personal-question.personal-question': ApiPersonalQuestionPersonalQuestion;
       'api::project.project': ApiProjectProject;
       'api::qualification-question.qualification-question': ApiQualificationQuestionQualificationQuestion;
       'api::responsibilitie.responsibilitie': ApiResponsibilitieResponsibilitie;
-      'api::shaper-review.shaper-review': ApiShaperReviewShaperReview;
+      'api::shaperreview.shaperreview': ApiShaperreviewShaperreview;
       'api::softskillrating.softskillrating': ApiSoftskillratingSoftskillrating;
       'api::team.team': ApiTeamTeam;
       'api::teamleader.teamleader': ApiTeamleaderTeamleader;

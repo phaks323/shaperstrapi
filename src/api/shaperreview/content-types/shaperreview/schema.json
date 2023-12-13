@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "shaper_reviews",
+  "collectionName": "shaperreviews",
   "info": {
-    "singularName": "shaper-review",
-    "pluralName": "shaper-reviews",
-    "displayName": "shaper-review",
-    "description": ""
+    "singularName": "shaperreview",
+    "pluralName": "shaperreviews",
+    "displayName": "shaperreview"
   },
   "options": {
     "draftAndPublish": true
@@ -15,11 +14,11 @@
     "review": {
       "type": "blocks"
     },
-    "applicants": {
+    "learners": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::applicant.applicant",
-      "inversedBy": "shaper_reviews"
+      "inversedBy": "shaperreviews"
     }
   }
 }
