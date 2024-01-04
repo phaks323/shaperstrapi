@@ -1087,13 +1087,13 @@ export interface ApiCohortCohort extends Schema.CollectionType {
         'https://raw.githubusercontent.com/phaks323/recruit/298cfd642cf082d1733f578b39c39f3d5dc0cf53/react-line.svg'
       ]
     >;
-    skill1_description: Attribute.Blocks;
-    skill2_description: Attribute.Blocks;
-    skill3_description: Attribute.Blocks;
-    skill4_description: Attribute.Blocks;
-    skill5_description: Attribute.Blocks;
-    skill6_description: Attribute.Blocks;
-    skill7_description: Attribute.Blocks;
+    skill1_description: Attribute.RichText;
+    skill2_description: Attribute.RichText;
+    skill13_description: Attribute.RichText;
+    skill4_description: Attribute.RichText;
+    skill5_description: Attribute.RichText;
+    skill6_description: Attribute.RichText;
+    skill7_description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1393,17 +1393,18 @@ export interface ApiShaperreviewShaperreview extends Schema.CollectionType {
     singularName: 'shaperreview';
     pluralName: 'shaperreviews';
     displayName: 'shaperreview';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    review: Attribute.Blocks;
     learners: Attribute.Relation<
       'api::shaperreview.shaperreview',
       'manyToMany',
       'api::applicant.applicant'
     >;
+    review: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1454,6 +1455,11 @@ export interface ApiSoftskillratingSoftskillrating
         'problemsolving'
       ]
     >;
+    problemsolving_description: Attribute.RichText;
+    interpersonal_description: Attribute.RichText;
+    teamwork_description: Attribute.RichText;
+    communication_description: Attribute.RichText;
+    leadership_description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

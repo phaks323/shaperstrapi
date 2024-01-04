@@ -276,25 +276,25 @@
       ]
     },
     "skill1_description": {
-      "type": "blocks"
+      "type": "richtext"
     },
     "skill2_description": {
-      "type": "blocks"
+      "type": "richtext"
     },
-    "skill3_description": {
-      "type": "blocks"
+    "skill13_description": {
+      "type": "richtext"
     },
     "skill4_description": {
-      "type": "blocks"
+      "type": "richtext"
     },
     "skill5_description": {
-      "type": "blocks"
+      "type": "richtext"
     },
     "skill6_description": {
-      "type": "blocks"
+      "type": "richtext"
     },
     "skill7_description": {
-      "type": "blocks"
+      "type": "richtext"
     }
   }
 }

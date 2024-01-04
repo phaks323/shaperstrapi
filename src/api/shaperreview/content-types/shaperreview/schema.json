@@ -4,21 +4,22 @@
   "info": {
     "singularName": "shaperreview",
     "pluralName": "shaperreviews",
-    "displayName": "shaperreview"
+    "displayName": "shaperreview",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "review": {
-      "type": "blocks"
-    },
     "learners": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::applicant.applicant",
       "inversedBy": "shaperreviews"
+    },
+    "review": {
+      "type": "richtext"
     }
   }
 }
