@@ -1251,14 +1251,14 @@ export interface ApiProjectProject extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    projectname: Attribute.String & Attribute.Required & Attribute.Unique;
-    problemstatement: Attribute.RichText & Attribute.Required;
-    solution: Attribute.RichText & Attribute.Required;
-    screenshot1explanation: Attribute.RichText & Attribute.Required;
-    screenshot2explanation: Attribute.RichText & Attribute.Required;
-    screenshot3explanation: Attribute.RichText & Attribute.Required;
-    screenshot4explanation: Attribute.RichText & Attribute.Required;
-    screenshot5explanation: Attribute.RichText & Attribute.Required;
+    projectname: Attribute.String & Attribute.Unique;
+    problemstatement: Attribute.RichText;
+    solution: Attribute.RichText;
+    screenshot1explanation: Attribute.RichText;
+    screenshot2explanation: Attribute.RichText;
+    screenshot3explanation: Attribute.RichText;
+    screenshot4explanation: Attribute.RichText;
+    screenshot5explanation: Attribute.RichText;
     screenshot6explanation: Attribute.RichText;
     screenshot7explanation: Attribute.RichText;
     applicants: Attribute.Relation<

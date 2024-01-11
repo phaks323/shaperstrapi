@@ -14,36 +14,36 @@
   "attributes": {
     "projectname": {
       "type": "string",
-      "required": true,
+      "required": false,
       "unique": true
     },
     "problemstatement": {
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "solution": {
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "screenshot1explanation": {
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "screenshot2explanation": {
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "screenshot3explanation": {
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "screenshot4explanation": {
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "screenshot5explanation": {
       "type": "richtext",
-      "required": true
+      "required": false
     },
     "screenshot6explanation": {
       "type": "richtext"
