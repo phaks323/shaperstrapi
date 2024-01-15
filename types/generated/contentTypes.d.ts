@@ -1089,7 +1089,7 @@ export interface ApiCohortCohort extends Schema.CollectionType {
     >;
     skill1_description: Attribute.RichText;
     skill2_description: Attribute.RichText;
-    skill13_description: Attribute.RichText;
+    skill3_description: Attribute.RichText;
     skill4_description: Attribute.RichText;
     skill5_description: Attribute.RichText;
     skill6_description: Attribute.RichText;
@@ -1354,21 +1354,7 @@ export interface ApiResponsibilitieResponsibilitie
       'manyToMany',
       'api::applicant.applicant'
     >;
-    responsibility1: Attribute.Enumeration<
-      ['Front-end using AngularJS', 'Back-end Using NodeJS']
-    >;
-    responsibility2: Attribute.Enumeration<
-      ['Front-end using AngularJS', 'Back-end Using NodeJS']
-    >;
-    responsibility3: Attribute.Enumeration<
-      ['Front-end using AngularJS', 'Back-end Using NodeJS']
-    >;
-    responsibility4: Attribute.Enumeration<
-      ['Front-end using AngularJS', 'Back-end Using NodeJS']
-    >;
-    responsibility5: Attribute.Enumeration<
-      ['Front-end using AngularJS', 'Back-end Using NodeJS']
-    >;
+    responsibility: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1441,25 +1427,17 @@ export interface ApiSoftskillratingSoftskillrating
       'manyToMany',
       'api::applicant.applicant'
     >;
-    problemsolving: Attribute.Decimal & Attribute.Required;
-    interpersonal: Attribute.Decimal;
-    teamwork: Attribute.Decimal;
-    communication: Attribute.Decimal & Attribute.Required;
-    leadership: Attribute.Decimal & Attribute.Required;
-    mostimproved: Attribute.Enumeration<
-      [
-        'communication',
-        'teamwork',
-        'leadership',
-        'interpersonal',
-        'problemsolving'
-      ]
-    >;
     problemsolving_description: Attribute.RichText;
     interpersonal_description: Attribute.RichText;
     teamwork_description: Attribute.RichText;
     communication_description: Attribute.RichText;
     leadership_description: Attribute.RichText;
+    problemsolving: Attribute.String & Attribute.DefaultTo<'1'>;
+    interpersonal: Attribute.String & Attribute.DefaultTo<'1'>;
+    teamwork: Attribute.String & Attribute.DefaultTo<'1'>;
+    communication: Attribute.String & Attribute.DefaultTo<'1'>;
+    leadership: Attribute.String & Attribute.DefaultTo<'1'>;
+    mostimproved: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1580,13 +1558,6 @@ export interface ApiTechnicalskillTechnicalskill extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    skill1: Attribute.Decimal & Attribute.Required;
-    skill2: Attribute.Decimal & Attribute.Required;
-    skill3: Attribute.Decimal & Attribute.Required;
-    skill4: Attribute.Decimal & Attribute.Required;
-    skill5: Attribute.Decimal & Attribute.Required;
-    skill6: Attribute.Decimal;
-    skill7: Attribute.Decimal;
     applicants: Attribute.Relation<
       'api::technicalskill.technicalskill',
       'manyToMany',
@@ -1608,6 +1579,13 @@ export interface ApiTechnicalskillTechnicalskill extends Schema.CollectionType {
         'Visualisation'
       ]
     >;
+    skill1: Attribute.String;
+    skill2: Attribute.String;
+    skill3: Attribute.String;
+    skill4: Attribute.String;
+    skill5: Attribute.String;
+    skill6: Attribute.String;
+    skill7: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

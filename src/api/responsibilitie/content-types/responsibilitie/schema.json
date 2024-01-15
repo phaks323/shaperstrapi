@@ -18,40 +18,8 @@
       "target": "api::applicant.applicant",
       "mappedBy": "responsibilities"
     },
-    "responsibility1": {
-      "type": "enumeration",
-      "enum": [
-        "Front-end using AngularJS",
-        "Back-end Using NodeJS"
-      ]
-    },
-    "responsibility2": {
-      "type": "enumeration",
-      "enum": [
-        "Front-end using AngularJS",
-        "Back-end Using NodeJS"
-      ]
-    },
-    "responsibility3": {
-      "type": "enumeration",
-      "enum": [
-        "Front-end using AngularJS",
-        "Back-end Using NodeJS"
-      ]
-    },
-    "responsibility4": {
-      "type": "enumeration",
-      "enum": [
-        "Front-end using AngularJS",
-        "Back-end Using NodeJS"
-      ]
-    },
-    "responsibility5": {
-      "type": "enumeration",
-      "enum": [
-        "Front-end using AngularJS",
-        "Back-end Using NodeJS"
-      ]
+    "responsibility": {
+      "type": "string"
     }
   }
 }

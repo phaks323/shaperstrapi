@@ -12,32 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "skill1": {
-      "type": "decimal",
-      "required": true
-    },
-    "skill2": {
-      "type": "decimal",
-      "required": true
-    },
-    "skill3": {
-      "type": "decimal",
-      "required": true
-    },
-    "skill4": {
-      "type": "decimal",
-      "required": true
-    },
-    "skill5": {
-      "type": "decimal",
-      "required": true
-    },
-    "skill6": {
-      "type": "decimal"
-    },
-    "skill7": {
-      "type": "decimal"
-    },
     "applicants": {
       "type": "relation",
       "relation": "manyToMany",
@@ -60,6 +34,27 @@
         "Bootstrap",
         "Visualisation"
       ]
+    },
+    "skill1": {
+      "type": "string"
+    },
+    "skill2": {
+      "type": "string"
+    },
+    "skill3": {
+      "type": "string"
+    },
+    "skill4": {
+      "type": "string"
+    },
+    "skill5": {
+      "type": "string"
+    },
+    "skill6": {
+      "type": "string"
+    },
+    "skill7": {
+      "type": "string"
     }
   }
 }
