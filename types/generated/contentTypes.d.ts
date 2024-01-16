@@ -1218,9 +1218,8 @@ export interface ApiPersonalQuestionPersonalQuestion
   };
   attributes: {
     question: Attribute.RichText & Attribute.Required;
-    type: Attribute.Enumeration<['Radio', 'Select', 'Text', 'Date', 'Number']> &
-      Attribute.Required;
     option: Attribute.RichText;
+    type: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
