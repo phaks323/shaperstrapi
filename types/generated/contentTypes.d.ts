@@ -783,6 +783,7 @@ export interface ApiCandidateCandidate extends Schema.CollectionType {
     singularName: 'candidate';
     pluralName: 'candidates';
     displayName: 'candidate';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -796,8 +797,6 @@ export interface ApiCandidateCandidate extends Schema.CollectionType {
     southafrican: Attribute.Boolean;
     province: Attribute.String;
     city: Attribute.String;
-    physicaladdress: Attribute.Blocks;
-    postaladdress: Attribute.Blocks;
     homelanguage: Attribute.String;
     highestqualification: Attribute.String;
     nextofkin: Attribute.String;
@@ -811,13 +810,15 @@ export interface ApiCandidateCandidate extends Schema.CollectionType {
     company2position: Attribute.String;
     termofcontractcompany1: Attribute.Integer;
     termofcontractcompany2: Attribute.Integer;
-    keyresponsibilitiescompany1: Attribute.Blocks;
-    keyresponsibilitiescompany2: Attribute.Blocks;
     Program: Attribute.String;
     idnumber: Attribute.String;
     phonenumber: Attribute.String;
     nextofkinnumber: Attribute.String;
     imageurl: Attribute.String;
+    physicaladdress: Attribute.RichText;
+    keyresponsibilitiescompany1: Attribute.RichText;
+    keyresponsibilitiescompany2: Attribute.RichText;
+    postaladdress: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1094,6 +1095,11 @@ export interface ApiCohortCohort extends Schema.CollectionType {
     skill5_description: Attribute.RichText;
     skill6_description: Attribute.RichText;
     skill7_description: Attribute.RichText;
+    list_1s: Attribute.Relation<
+      'api::cohort.cohort',
+      'manyToMany',
+      'api::list1.list1'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1151,6 +1157,7 @@ export interface ApiList1List1 extends Schema.CollectionType {
     singularName: 'list1';
     pluralName: 'list1s';
     displayName: 'list1';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1164,8 +1171,6 @@ export interface ApiList1List1 extends Schema.CollectionType {
     southafrican: Attribute.Boolean;
     province: Attribute.String;
     city: Attribute.String;
-    physicaladdress: Attribute.Blocks;
-    postaladdress: Attribute.Blocks;
     homelanguage: Attribute.String;
     highestqualification: Attribute.String;
     nextofkin: Attribute.String;
@@ -1179,13 +1184,55 @@ export interface ApiList1List1 extends Schema.CollectionType {
     company2position: Attribute.String;
     termofcontractcompany1: Attribute.Integer;
     termofcontractcompany2: Attribute.Integer;
-    keyresponsibilitiescompany1: Attribute.Blocks;
-    keyresponsibilitiescompany2: Attribute.Blocks;
     Program: Attribute.String;
     idnumber: Attribute.String;
     phonenumber: Attribute.String;
     nextofkinumber: Attribute.String;
     imageurl: Attribute.String;
+    cohorts: Attribute.Relation<
+      'api::list1.list1',
+      'manyToMany',
+      'api::cohort.cohort'
+    >;
+    projects: Attribute.Relation<
+      'api::list1.list1',
+      'manyToMany',
+      'api::project.project'
+    >;
+    responsibilities: Attribute.Relation<
+      'api::list1.list1',
+      'manyToMany',
+      'api::responsibilitie.responsibilitie'
+    >;
+    shaperreviews: Attribute.Relation<
+      'api::list1.list1',
+      'manyToMany',
+      'api::shaperreview.shaperreview'
+    >;
+    softskillratings: Attribute.Relation<
+      'api::list1.list1',
+      'manyToMany',
+      'api::softskillrating.softskillrating'
+    >;
+    teams: Attribute.Relation<
+      'api::list1.list1',
+      'manyToMany',
+      'api::team.team'
+    >;
+    teamleaders: Attribute.Relation<
+      'api::list1.list1',
+      'manyToMany',
+      'api::teamleader.teamleader'
+    >;
+    techskillratings: Attribute.Relation<
+      'api::list1.list1',
+      'manyToMany',
+      'api::technicalskill.technicalskill'
+    >;
+    physicaladdress: Attribute.RichText;
+    postaladdress: Attribute.RichText;
+    keyresponsibilitiescompany1: Attribute.RichText;
+    keyresponsibilitiescompany2: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1283,6 +1330,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
     screenshot5_image: Attribute.String;
     screenshot6_image: Attribute.String;
     screenshot7_image: Attribute.String;
+    list_1s: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::list1.list1'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1354,6 +1406,11 @@ export interface ApiResponsibilitieResponsibilitie
       'api::applicant.applicant'
     >;
     responsibility: Attribute.String;
+    list_1s: Attribute.Relation<
+      'api::responsibilitie.responsibilitie',
+      'manyToMany',
+      'api::list1.list1'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1390,6 +1447,11 @@ export interface ApiShaperreviewShaperreview extends Schema.CollectionType {
       'api::applicant.applicant'
     >;
     review: Attribute.RichText;
+    list_1s: Attribute.Relation<
+      'api::shaperreview.shaperreview',
+      'manyToMany',
+      'api::list1.list1'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1437,6 +1499,11 @@ export interface ApiSoftskillratingSoftskillrating
     communication: Attribute.String & Attribute.DefaultTo<'1'>;
     leadership: Attribute.String & Attribute.DefaultTo<'1'>;
     mostimproved: Attribute.String;
+    list_1s: Attribute.Relation<
+      'api::softskillrating.softskillrating',
+      'manyToMany',
+      'api::list1.list1'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1488,6 +1555,11 @@ export interface ApiTeamTeam extends Schema.CollectionType {
       'manyToMany',
       'api::cohort.cohort'
     >;
+    list_1s: Attribute.Relation<
+      'api::team.team',
+      'manyToMany',
+      'api::list1.list1'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1526,6 +1598,11 @@ export interface ApiTeamleaderTeamleader extends Schema.CollectionType {
       'api::teamleader.teamleader',
       'manyToMany',
       'api::cohort.cohort'
+    >;
+    list_1s: Attribute.Relation<
+      'api::teamleader.teamleader',
+      'manyToMany',
+      'api::list1.list1'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1585,6 +1662,11 @@ export interface ApiTechnicalskillTechnicalskill extends Schema.CollectionType {
     skill5: Attribute.String;
     skill6: Attribute.String;
     skill7: Attribute.String;
+    list_1s: Attribute.Relation<
+      'api::technicalskill.technicalskill',
+      'manyToMany',
+      'api::list1.list1'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

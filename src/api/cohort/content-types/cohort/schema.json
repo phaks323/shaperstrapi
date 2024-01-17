@@ -295,6 +295,12 @@
     },
     "skill7_description": {
       "type": "richtext"
+    },
+    "list_1s": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::list1.list1",
+      "mappedBy": "cohorts"
     }
   }
 }

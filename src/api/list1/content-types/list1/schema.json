@@ -4,7 +4,8 @@
   "info": {
     "singularName": "list1",
     "pluralName": "list1s",
-    "displayName": "list1"
+    "displayName": "list1",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -34,12 +35,6 @@
     },
     "city": {
       "type": "string"
-    },
-    "physicaladdress": {
-      "type": "blocks"
-    },
-    "postaladdress": {
-      "type": "blocks"
     },
     "homelanguage": {
       "type": "string"
@@ -80,12 +75,6 @@
     "termofcontractcompany2": {
       "type": "integer"
     },
-    "keyresponsibilitiescompany1": {
-      "type": "blocks"
-    },
-    "keyresponsibilitiescompany2": {
-      "type": "blocks"
-    },
     "Program": {
       "type": "string"
     },
@@ -100,6 +89,66 @@
     },
     "imageurl": {
       "type": "string"
+    },
+    "cohorts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cohort.cohort",
+      "inversedBy": "list_1s"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "inversedBy": "list_1s"
+    },
+    "responsibilities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::responsibilitie.responsibilitie",
+      "inversedBy": "list_1s"
+    },
+    "shaperreviews": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::shaperreview.shaperreview",
+      "inversedBy": "list_1s"
+    },
+    "softskillratings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::softskillrating.softskillrating",
+      "inversedBy": "list_1s"
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::team.team",
+      "inversedBy": "list_1s"
+    },
+    "teamleaders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::teamleader.teamleader",
+      "inversedBy": "list_1s"
+    },
+    "techskillratings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::technicalskill.technicalskill",
+      "inversedBy": "list_1s"
+    },
+    "physicaladdress": {
+      "type": "richtext"
+    },
+    "postaladdress": {
+      "type": "richtext"
+    },
+    "keyresponsibilitiescompany1": {
+      "type": "richtext"
+    },
+    "keyresponsibilitiescompany2": {
+      "type": "richtext"
     }
   }
 }

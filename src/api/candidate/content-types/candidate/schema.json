@@ -4,7 +4,8 @@
   "info": {
     "singularName": "candidate",
     "pluralName": "candidates",
-    "displayName": "candidate"
+    "displayName": "candidate",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -34,12 +35,6 @@
     },
     "city": {
       "type": "string"
-    },
-    "physicaladdress": {
-      "type": "blocks"
-    },
-    "postaladdress": {
-      "type": "blocks"
     },
     "homelanguage": {
       "type": "string"
@@ -80,12 +75,6 @@
     "termofcontractcompany2": {
       "type": "integer"
     },
-    "keyresponsibilitiescompany1": {
-      "type": "blocks"
-    },
-    "keyresponsibilitiescompany2": {
-      "type": "blocks"
-    },
     "Program": {
       "type": "string"
     },
@@ -100,6 +89,18 @@
     },
     "imageurl": {
       "type": "string"
+    },
+    "physicaladdress": {
+      "type": "richtext"
+    },
+    "keyresponsibilitiescompany1": {
+      "type": "richtext"
+    },
+    "keyresponsibilitiescompany2": {
+      "type": "richtext"
+    },
+    "postaladdress": {
+      "type": "richtext"
     }
   }
 }

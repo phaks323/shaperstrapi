@@ -55,6 +55,12 @@
     },
     "mostimproved": {
       "type": "string"
+    },
+    "list_1s": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::list1.list1",
+      "mappedBy": "softskillratings"
     }
   }
 }

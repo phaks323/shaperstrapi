@@ -37,6 +37,12 @@
       "relation": "manyToMany",
       "target": "api::cohort.cohort",
       "mappedBy": "teamleaders"
+    },
+    "list_1s": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::list1.list1",
+      "mappedBy": "teamleaders"
     }
   }
 }
