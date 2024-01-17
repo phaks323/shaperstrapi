@@ -184,6 +184,48 @@
       "relation": "manyToMany",
       "target": "api::shaperreview.shaperreview",
       "mappedBy": "learners"
+    },
+    "techskillsratingdescriptions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::techskillsratingdescription.techskillsratingdescription",
+      "mappedBy": "learners"
+    },
+    "softskilldescriptions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::softskilldescription.softskilldescription",
+      "mappedBy": "learners"
+    },
+    "problemsolvingratingdescriptions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::problemsolvingratingdescription.problemsolvingratingdescription",
+      "mappedBy": "learners"
+    },
+    "teamworkratingdescriptions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::teamworkratingdescription.teamworkratingdescription",
+      "mappedBy": "learners"
+    },
+    "communicationratingdescriptions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::communicationratingdescription.communicationratingdescription",
+      "mappedBy": "learners"
+    },
+    "leadershipratingdescriptions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::leadershipratingdescription.leadershipratingdescription",
+      "mappedBy": "learners"
+    },
+    "interpersonalratingdescriptions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::interpersonalratingdescription.interpersonalratingdescription",
+      "mappedBy": "learners"
     }
   }
 }

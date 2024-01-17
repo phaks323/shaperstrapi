@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leadershipratingdescriptions",
+  "info": {
+    "singularName": "leadershipratingdescription",
+    "pluralName": "leadershipratingdescriptions",
+    "displayName": "leadershipratingdescription",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rating1": {
+      "type": "richtext"
+    },
+    "rating2": {
+      "type": "richtext"
+    },
+    "rating3": {
+      "type": "richtext"
+    },
+    "rating4": {
+      "type": "richtext"
+    },
+    "rating5": {
+      "type": "richtext"
+    },
+    "learners": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::applicant.applicant",
+      "inversedBy": "leadershipratingdescriptions"
+    }
+  }
+}

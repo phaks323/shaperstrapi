@@ -18,21 +18,6 @@
       "target": "api::applicant.applicant",
       "mappedBy": "softskillratings"
     },
-    "problemsolving_description": {
-      "type": "richtext"
-    },
-    "interpersonal_description": {
-      "type": "richtext"
-    },
-    "teamwork_description": {
-      "type": "richtext"
-    },
-    "communication_description": {
-      "type": "richtext"
-    },
-    "leadership_description": {
-      "type": "richtext"
-    },
     "problemsolving": {
       "type": "string",
       "default": "1"

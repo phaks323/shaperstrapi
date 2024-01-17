@@ -759,6 +759,41 @@ export interface ApiApplicantApplicant extends Schema.CollectionType {
       'manyToMany',
       'api::shaperreview.shaperreview'
     >;
+    techskillsratingdescriptions: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::techskillsratingdescription.techskillsratingdescription'
+    >;
+    softskilldescriptions: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::softskilldescription.softskilldescription'
+    >;
+    problemsolvingratingdescriptions: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::problemsolvingratingdescription.problemsolvingratingdescription'
+    >;
+    teamworkratingdescriptions: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::teamworkratingdescription.teamworkratingdescription'
+    >;
+    communicationratingdescriptions: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::communicationratingdescription.communicationratingdescription'
+    >;
+    leadershipratingdescriptions: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::leadershipratingdescription.leadershipratingdescription'
+    >;
+    interpersonalratingdescriptions: Attribute.Relation<
+      'api::applicant.applicant',
+      'manyToMany',
+      'api::interpersonalratingdescription.interpersonalratingdescription'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1118,6 +1153,47 @@ export interface ApiCohortCohort extends Schema.CollectionType {
   };
 }
 
+export interface ApiCommunicationratingdescriptionCommunicationratingdescription
+  extends Schema.CollectionType {
+  collectionName: 'communicationratingdescriptions';
+  info: {
+    singularName: 'communicationratingdescription';
+    pluralName: 'communicationratingdescriptions';
+    displayName: 'communicationratingdescription';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    rating1: Attribute.RichText;
+    rating2: Attribute.RichText;
+    rating3: Attribute.RichText;
+    rating4: Attribute.RichText;
+    rating5: Attribute.RichText;
+    learners: Attribute.Relation<
+      'api::communicationratingdescription.communicationratingdescription',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::communicationratingdescription.communicationratingdescription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::communicationratingdescription.communicationratingdescription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiContactDetailContactDetail extends Schema.CollectionType {
   collectionName: 'contact_details';
   info: {
@@ -1144,6 +1220,88 @@ export interface ApiContactDetailContactDetail extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::contact-detail.contact-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiInterpersonalratingdescriptionInterpersonalratingdescription
+  extends Schema.CollectionType {
+  collectionName: 'interpersonalratingdescriptions';
+  info: {
+    singularName: 'interpersonalratingdescription';
+    pluralName: 'interpersonalratingdescriptions';
+    displayName: 'interpersonalratingdescription';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    rating1: Attribute.RichText;
+    rating2: Attribute.RichText;
+    rating3: Attribute.RichText;
+    rating4: Attribute.RichText;
+    rating5: Attribute.RichText;
+    learners: Attribute.Relation<
+      'api::interpersonalratingdescription.interpersonalratingdescription',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::interpersonalratingdescription.interpersonalratingdescription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::interpersonalratingdescription.interpersonalratingdescription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLeadershipratingdescriptionLeadershipratingdescription
+  extends Schema.CollectionType {
+  collectionName: 'leadershipratingdescriptions';
+  info: {
+    singularName: 'leadershipratingdescription';
+    pluralName: 'leadershipratingdescriptions';
+    displayName: 'leadershipratingdescription';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    rating1: Attribute.RichText;
+    rating2: Attribute.RichText;
+    rating3: Attribute.RichText;
+    rating4: Attribute.RichText;
+    rating5: Attribute.RichText;
+    learners: Attribute.Relation<
+      'api::leadershipratingdescription.leadershipratingdescription',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::leadershipratingdescription.leadershipratingdescription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::leadershipratingdescription.leadershipratingdescription',
       'oneToOne',
       'admin::user'
     > &
@@ -1278,6 +1436,47 @@ export interface ApiPersonalQuestionPersonalQuestion
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::personal-question.personal-question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProblemsolvingratingdescriptionProblemsolvingratingdescription
+  extends Schema.CollectionType {
+  collectionName: 'problemsolvingratingdescriptions';
+  info: {
+    singularName: 'problemsolvingratingdescription';
+    pluralName: 'problemsolvingratingdescriptions';
+    displayName: 'problemsolvingratingdescription';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    rating1: Attribute.RichText;
+    rating2: Attribute.RichText;
+    rating3: Attribute.RichText;
+    rating4: Attribute.RichText;
+    rating5: Attribute.RichText;
+    learners: Attribute.Relation<
+      'api::problemsolvingratingdescription.problemsolvingratingdescription',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::problemsolvingratingdescription.problemsolvingratingdescription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::problemsolvingratingdescription.problemsolvingratingdescription',
       'oneToOne',
       'admin::user'
     > &
@@ -1470,6 +1669,47 @@ export interface ApiShaperreviewShaperreview extends Schema.CollectionType {
   };
 }
 
+export interface ApiSoftskilldescriptionSoftskilldescription
+  extends Schema.CollectionType {
+  collectionName: 'softskilldescriptions';
+  info: {
+    singularName: 'softskilldescription';
+    pluralName: 'softskilldescriptions';
+    displayName: 'softskilldescription';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    problemsolving_description: Attribute.RichText;
+    interpersonal_description: Attribute.RichText;
+    communication_description: Attribute.RichText;
+    leadership_description: Attribute.RichText;
+    teamwork_description: Attribute.RichText;
+    learners: Attribute.Relation<
+      'api::softskilldescription.softskilldescription',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::softskilldescription.softskilldescription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::softskilldescription.softskilldescription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSoftskillratingSoftskillrating
   extends Schema.CollectionType {
   collectionName: 'softskillratings';
@@ -1488,11 +1728,6 @@ export interface ApiSoftskillratingSoftskillrating
       'manyToMany',
       'api::applicant.applicant'
     >;
-    problemsolving_description: Attribute.RichText;
-    interpersonal_description: Attribute.RichText;
-    teamwork_description: Attribute.RichText;
-    communication_description: Attribute.RichText;
-    leadership_description: Attribute.RichText;
     problemsolving: Attribute.String & Attribute.DefaultTo<'1'>;
     interpersonal: Attribute.String & Attribute.DefaultTo<'1'>;
     teamwork: Attribute.String & Attribute.DefaultTo<'1'>;
@@ -1622,6 +1857,47 @@ export interface ApiTeamleaderTeamleader extends Schema.CollectionType {
   };
 }
 
+export interface ApiTeamworkratingdescriptionTeamworkratingdescription
+  extends Schema.CollectionType {
+  collectionName: 'teamworkratingdescriptions';
+  info: {
+    singularName: 'teamworkratingdescription';
+    pluralName: 'teamworkratingdescriptions';
+    displayName: 'teamworkratingdescription';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    rating1: Attribute.RichText;
+    rating2: Attribute.RichText;
+    rating3: Attribute.RichText;
+    rating4: Attribute.RichText;
+    rating5: Attribute.RichText;
+    learners: Attribute.Relation<
+      'api::teamworkratingdescription.teamworkratingdescription',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::teamworkratingdescription.teamworkratingdescription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::teamworkratingdescription.teamworkratingdescription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTechnicalskillTechnicalskill extends Schema.CollectionType {
   collectionName: 'technicalskills';
   info: {
@@ -1685,6 +1961,47 @@ export interface ApiTechnicalskillTechnicalskill extends Schema.CollectionType {
   };
 }
 
+export interface ApiTechskillsratingdescriptionTechskillsratingdescription
+  extends Schema.CollectionType {
+  collectionName: 'techskillsratingdescriptions';
+  info: {
+    singularName: 'techskillsratingdescription';
+    pluralName: 'techskillsratingdescriptions';
+    displayName: 'techskillsratingdescription';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    rating1: Attribute.RichText;
+    rating2: Attribute.RichText;
+    rating3: Attribute.RichText;
+    rating4: Attribute.RichText;
+    rating5: Attribute.RichText;
+    learners: Attribute.Relation<
+      'api::techskillsratingdescription.techskillsratingdescription',
+      'manyToMany',
+      'api::applicant.applicant'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::techskillsratingdescription.techskillsratingdescription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::techskillsratingdescription.techskillsratingdescription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiWorkHistoryQuestionWorkHistoryQuestion
   extends Schema.CollectionType {
   collectionName: 'work_history_questions';
@@ -1740,17 +2057,24 @@ declare module '@strapi/types' {
       'api::applicant.applicant': ApiApplicantApplicant;
       'api::candidate.candidate': ApiCandidateCandidate;
       'api::cohort.cohort': ApiCohortCohort;
+      'api::communicationratingdescription.communicationratingdescription': ApiCommunicationratingdescriptionCommunicationratingdescription;
       'api::contact-detail.contact-detail': ApiContactDetailContactDetail;
+      'api::interpersonalratingdescription.interpersonalratingdescription': ApiInterpersonalratingdescriptionInterpersonalratingdescription;
+      'api::leadershipratingdescription.leadershipratingdescription': ApiLeadershipratingdescriptionLeadershipratingdescription;
       'api::list1.list1': ApiList1List1;
       'api::personal-question.personal-question': ApiPersonalQuestionPersonalQuestion;
+      'api::problemsolvingratingdescription.problemsolvingratingdescription': ApiProblemsolvingratingdescriptionProblemsolvingratingdescription;
       'api::project.project': ApiProjectProject;
       'api::qualification-question.qualification-question': ApiQualificationQuestionQualificationQuestion;
       'api::responsibilitie.responsibilitie': ApiResponsibilitieResponsibilitie;
       'api::shaperreview.shaperreview': ApiShaperreviewShaperreview;
+      'api::softskilldescription.softskilldescription': ApiSoftskilldescriptionSoftskilldescription;
       'api::softskillrating.softskillrating': ApiSoftskillratingSoftskillrating;
       'api::team.team': ApiTeamTeam;
       'api::teamleader.teamleader': ApiTeamleaderTeamleader;
+      'api::teamworkratingdescription.teamworkratingdescription': ApiTeamworkratingdescriptionTeamworkratingdescription;
       'api::technicalskill.technicalskill': ApiTechnicalskillTechnicalskill;
+      'api::techskillsratingdescription.techskillsratingdescription': ApiTechskillsratingdescriptionTechskillsratingdescription;
       'api::work-history-question.work-history-question': ApiWorkHistoryQuestionWorkHistoryQuestion;
     }
   }
