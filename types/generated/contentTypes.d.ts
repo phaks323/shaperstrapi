@@ -1203,7 +1203,9 @@ export interface ApiContactDetailContactDetail extends Schema.CollectionType {
   attributes: {
     question: Attribute.RichText & Attribute.Required;
     option: Attribute.RichText;
-    type: Attribute.Enumeration<['Radio', 'Select', 'Text', 'Date', 'Number']>;
+    type: Attribute.Enumeration<
+      ['Radio', 'Select', 'Text', 'Date', 'Number', 'Url']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

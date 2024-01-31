@@ -26,7 +26,8 @@
         "Select",
         "Text",
         "Date",
-        "Number"
+        "Number",
+        "Url"
       ]
     }
   }
